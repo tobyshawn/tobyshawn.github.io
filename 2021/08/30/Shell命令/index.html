@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Windows server 2012 安装IIS, 舒舒舒的摸鱼台">
+    <meta name="keywords" content="Shell基础, 舒舒舒的摸鱼台">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Windows server 2012 安装IIS | 舒舒舒的摸鱼台</title>
+    <title>Shell基础 | 舒舒舒的摸鱼台</title>
     <link rel="icon" type="image/jpeg" href="/favicon.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -225,12 +225,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Windows server 2012 安装IIS</h1>
+                    <h1 class="description center-align post-title">Shell基础</h1>
                 </div>
             </div>
         </div>
@@ -344,9 +344,17 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/linux/">
+                                <span class="chip bg-color">linux</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%BC%96%E7%A8%8B/">
+                                <span class="chip bg-color">编程</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -358,7 +366,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-06-11
+                    2021-08-30
                 </div>
                 
 
@@ -372,7 +380,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    109
+                    3.6k
                 </div>
                 
 
@@ -394,31 +402,696 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Windows server 2012 安装IIS</p>
-<p>选择服务器管理——添加角色和功能</p>
-<p><img src="https://ts-bucker.oss-cn-hangzhou.aliyuncs.com/uPic/image-20210611130800043.png" alt="image-20210611130800043"></p>
-<p>点击下一步</p>
-<p><img src="https://ts-bucker.oss-cn-hangzhou.aliyuncs.com/uPic/image-20210611130832047.png" alt="image-20210611130832047"></p>
-<p>下一步</p>
-<p><img src="https://ts-bucker.oss-cn-hangzhou.aliyuncs.com/uPic/image-20210611130930720.png" alt="image-20210611130930720"></p>
-<p>勾选“Web服务器（IIS）”和“应用程序服务”</p>
-<p><img src="https://ts-bucker.oss-cn-hangzhou.aliyuncs.com/uPic/image-20210611131026012.png" alt="image-20210611131026012"></p>
-<p>选择“3.5”、“4.5”、“IIS可承载web核心”</p>
-<p><img src="https://ts-bucker.oss-cn-hangzhou.aliyuncs.com/uPic/image-20210611131241134.png" alt="image-20210611131241134"></p>
-<p>下一步</p>
-<p>![image-20210611131333225](/Users/tobyshawn/Library/Application Support/typora-user-images/image-20210611131333225.png)</p>
-<p>勾选CGI</p>
-<p><img src="https://ts-bucker.oss-cn-hangzhou.aliyuncs.com/uPic/image-20210611131812900.png" alt="image-20210611131812900"></p>
-<p>下一步</p>
-<p><img src="https://ts-bucker.oss-cn-hangzhou.aliyuncs.com/uPic/image-20210611131855563.png" alt="image-20210611131855563"></p>
-<p>勾选如图所示</p>
-<p><img src="https://ts-bucker.oss-cn-hangzhou.aliyuncs.com/uPic/image-20210611131940473.png" alt="image-20210611131940473"></p>
-<p>点击安装</p>
-<p><img src="https://ts-bucker.oss-cn-hangzhou.aliyuncs.com/uPic/image-20210611132037901.png" alt="image-20210611132037901"></p>
-<p>等待安装完成</p>
-<p><img src="https://ts-bucker.oss-cn-hangzhou.aliyuncs.com/uPic/image-20210611133105206.png" alt="image-20210611133105206"></p>
-<p>访问服务器地址即可看到IIS的欢迎界面</p>
-<p><img src="https://ts-bucker.oss-cn-hangzhou.aliyuncs.com/uPic/image-20210611133330123.png" alt="image-20210611133330123"></p>
+                <h2 id="Shell基本概述"><a href="#Shell基本概述" class="headerlink" title="Shell基本概述"></a>Shell基本概述</h2><h3 id="shell的概念"><a href="#shell的概念" class="headerlink" title="shell的概念"></a>shell的概念</h3><p>shell的原意指的是壳，正如它的本义一样，它将计算的内核进行包裹，而用户通过它这层外壳来访问计算的各种软硬件资源。通常，shell是用C语言编写的应用程序。既然是应用程序，就需要加载执行，而shell作为一类特殊的应用程序，是由系统在启动时自动加载的。</p>
+<p>shell是一个<strong>应用程序</strong>，它连接了用户和linux内核，让用户能够更高效、安全、低成本的使用linux内核，这个就是shell的本质</p>
+<p>一般放在/bin或者/usr/bin目录下，当前 Linux 系统可用的 Shell 都记录在/etc/shells文件中</p>
+<p>可以使用echo $SHELL查看当前shell</p>
+<pre><code>tobyshawn @ MacBookPro-M1 in ~ $ cat /etc/shells                                        exit 1 18:58:10
+/bin/bash
+/bin/csh
+/bin/dash
+/bin/ksh
+/bin/sh
+/bin/tcsh
+/bin/zsh
+/usr/local/bin/pwsh
+</code></pre>
+<pre><code>root@8c300f41b9f9:/# cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+mysql:x:101:102:MySQL Server,,,:/nonexistent:/bin/false
+guest1:x:1000:1000::/home/guest1:/bin/sh
+guest2:x:1001:1001::/home/guest2:/bin/sh
+</code></pre>
+<p>注册名：密码：UID：GID：用户名：主目录：shell</p>
+<p>所有的伪用户，也是系统用户，它的shell是/bin/nologin，绝大多数不是用来执行命令的用户，就写的是/sbin/nologin 代表整个用户不允许登录</p>
+<h3 id="shell的分类"><a href="#shell的分类" class="headerlink" title="shell的分类"></a>shell的分类</h3><p>Linux 中的 shell 有多种类型，其中最常用的几种是 bourne shell(sh)、c shell(csh)、korn shell(ksh)。</p>
+<p>sh 是 Unix 最初使用的 shell，并且在每种 Unix 上都可以使用。sh 在 shell 编程方面相当优秀，但在处理与用户的交互方面做得不如 csh 和 ksh。</p>
+<ul>
+<li><strong>bash</strong></li>
+</ul>
+<p>bourne again shell，大多数 Linux 系统默认使用的 shell，bash shell 是 Bourne shell 的一个免费版本，它是最早的 Unix shell，bash 还有一个特点，可以通过 help 命令来查看帮助。包含的功能几乎可以涵盖 shell 所具有的功能，所以一般的 shell 脚本都会指定它为执行路径。</p>
+<p>可以提供如<strong>命令补全</strong>、<strong>命令编辑</strong>和<strong>命令历史</strong>表等功能它还包含了很多 csh 和 ksh 中的优点，有灵活和强大的编程接口，同时又有友好的用户界面。</p>
+<ul>
+<li><strong>csh</strong></li>
+</ul>
+<p>C shell 使用的是 “类C” 语法，csh 是具有<strong>C语言</strong>风格的一种 shell，其内部命令有 52 个，较为庞大。目前使用的并不多，已经被 /bin/tcsh 所取代。</p>
+<ul>
+<li><strong>ksh</strong></li>
+</ul>
+<p>Korn shell 的语法与 Bourne shell 相同，同时具备了 C shell 的易用特点。许多安装脚本都使用 ksh,ksh 有 42 条内部命令，与 bash 相比有一定的限制性。</p>
+<ul>
+<li><strong>tcsh</strong></li>
+</ul>
+<p>tcsh 是 csh 的增强版，与 C shell 完全兼容。</p>
+<ul>
+<li><strong>sh</strong></li>
+</ul>
+<p>是一个快捷方式，已经被 /bin/bash 所取代。</p>
+<ul>
+<li><strong>nologin</strong></li>
+</ul>
+<p>指用户不能登录。</p>
+<ul>
+<li><strong>zsh</strong></li>
+</ul>
+<p>目前 Linux 里最庞大的一种 shell：zsh。它有 84 个内部命令，使用起来也比较复杂。一般情况下，不会使用该 shell。</p>
+<h3 id="shell的作用"><a href="#shell的作用" class="headerlink" title="shell的作用"></a>shell的作用</h3><ul>
+<li>命令解释器，让用户有个操作的界面，给用户提供了一个可以敲命令地方。</li>
+<li>可以支持强大的编程语言的界面。允许用户编程。</li>
+</ul>
+<h2 id="Shell编程基础"><a href="#Shell编程基础" class="headerlink" title="Shell编程基础"></a>Shell编程基础</h2><h3 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h3><p>Shell 脚本（shell script），是一种为 shell 编写的脚本程序。</p>
+<p>业界所说的 shell 通常都是指 shell 脚本，但读者朋友要知道，shell 和 shell script 是两个不同的概念。</p>
+<p>由于习惯的原因，简洁起见，本文出现的 “shell编程” 都是指 shell 脚本编程，不是指开发 shell 自身。</p>
+<p>作为可执行程序</p>
+<pre><code>root@8c300f41b9f9:/home# ls     #查看该路径下文件
+HW.sh
+
+root@8c300f41b9f9:/home# cat HW.sh      #查看文件内容
+#!/bin/bash
+echo &quot;Hello Dbapp!&quot;
+
+root@8c300f41b9f9:/home# chmod +x HW.sh     #给文件增加执行权限
+
+root@8c300f41b9f9:/home# ./HW.sh        #执行
+Hello Dbapp!
+</code></pre>
+<p><strong>#!</strong> 是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行，即使用哪一种 Shell</p>
+<p>在执行时需要写成./HW.sh，而不能直接写HW.sh，否则会去PATH里寻找有没有叫HW.sh的路径（./表示当前路径）</p>
+<p>作为解释器参数（不需要在第一行指定解释器信息）</p>
+<pre><code>root@8c300f41b9f9:/home# ll HW.sh           #查看权限
+-rw-r--r-- 1 root root 20 Jul 28 09:29 HW.sh
+
+root@8c300f41b9f9:/home# cat HW.sh      #查看内容（没有指定解释器）
+echo &quot;Hello Dbapp!&quot;
+
+root@8c300f41b9f9:/home# /bin/bash HW.sh    #作为解释器的参数执行
+Hello Dbapp!
+</code></pre>
+<h3 id="shell变量"><a href="#shell变量" class="headerlink" title="shell变量"></a>shell变量</h3><p>变量名<strong>定义时</strong>不需要加$符号</p>
+<p>变量名的命名规则</p>
+<ol>
+<li>只能使用英文字母，数字和下划线，不能以数字开头</li>
+<li>中间不能有空格，可以使用下划线</li>
+<li>不能使用标点符号</li>
+<li>不能使用bash里的关键字（可用help命令查看保留关键字）</li>
+</ol>
+<p>有效的变量名</p>
+<pre><code>Toby3shawn
+_DAS
+Dbapp2
+JK_RL_PD
+</code></pre>
+<p>无效的变量名</p>
+<pre><code>+chr
+3sky
+toby shawn
+echo
+bash
+db、app
+</code></pre>
+<h4 id="变量赋值"><a href="#变量赋值" class="headerlink" title="变量赋值"></a>变量赋值</h4><p>等号左右不能有空格</p>
+<p>单引号赋值会直接输出引号内容</p>
+<p>双引号赋值会先解析变量和命令，会进行转移</p>
+<p>反引号``或者括号$()括起来的部分是shell命令部分</p>
+<pre><code>root@8c300f41b9f9:/home# cat test.sh
+#!/bin/bash
+my_id=&#39;123456&#39;              #直接赋值
+echo $my_id
+
+
+for file1 in `ls /home/dir1`        #通过语句赋值
+do
+echo $file1
+done
+
+for file2 in $(ls /home/dir2)       #通过语句赋值
+do
+echo $file2
+done
+
+root@8c300f41b9f9:/home# ls *       #查看目录结构
+HW.sh  test.sh
+
+dir1:
+1.txt  2.txt  3.txt
+
+dir2:
+a.txt  b.txt  c.txt
+
+root@8c300f41b9f9:/home# ./test.sh
+123456
+
+1.txt                   #变量file1被赋值输出
+2.txt
+3.txt
+
+a.txt                   #变量file2被赋值输出
+b.txt
+c.txt
+</code></pre>
+<h4 id="变量使用"><a href="#变量使用" class="headerlink" title="变量使用"></a>变量使用</h4><pre><code>root@8c300f41b9f9:/home# cat test2.sh
+#!/bin/bash
+weather=&quot;cloudy&quot;
+echo &quot;It&#39;s $weather today&quot;          #定义过的变量只要加$即可输出
+
+weather=&quot;cloudy&quot;
+echo &quot;It&#39;s $&#123;weather&#125; today&quot;        #花括号是可选的
+
+weather=&quot;cloudy&quot;
+echo &quot;It&#39;s_$weather_today&quot;          #weather_today会被当成新的变量
+
+weather=&quot;cloudy&quot;
+echo &quot;It&#39;s_$&#123;weather&#125;_today&quot;        #与上一条对比，花括号为了定义变量的边界
+
+root@8c300f41b9f9:/home# ./test2.sh
+It&#39;s cloudy today
+It&#39;s cloudy today
+It&#39;s_
+It&#39;s_cloudy_today
+</code></pre>
+<p>建议给所有变量都加上花括号</p>
+<pre><code>name=&quot;pony&quot;
+echo $name
+name=&quot;jack&quot;
+echo $name
+
+name=&quot;pony&quot;
+echo $name
+$name=&quot;jack&quot;        #变量在赋值的时候不要加$符号
+echo $name
+
+
+root@8c300f41b9f9:/home# ./test3.sh
+pony
+jack
+
+pony
+./test3.sh: line 8: pony=jack: command not found
+pony
+</code></pre>
+<p>只读与删除</p>
+<pre><code>root@8c300f41b9f9:/home# cat test4.sh
+#!/bin/bash
+
+address=&quot;AHDS&quot;
+name=&quot;shawn&quot;
+
+readonly address            #设置为只读
+
+echo $address
+echo $name
+
+address=&quot;AHDS_2&quot;            #赋值会失败
+name=&quot;shawn_2&quot;              #赋值成功
+
+echo $address                   #输出原来的
+echo $name                      #输出新的
+
+unset address                   #删除变量（只读无法删除）
+unset name                      #删除变量
+
+echo $address
+echo $name
+
+
+root@8c300f41b9f9:/home# ./test4.sh
+AHDS
+shawn
+./test4.sh: line 11: address: readonly variable
+AHDS
+shawn_2
+./test4.sh: line 17: unset: address: cannot unset: readonly variable
+AHDS
+</code></pre>
+<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>拼接字符串</p>
+<pre><code>root@8c300f41b9f9:/home# cat test5.sh
+#!/bin/bash
+
+weather=&quot;cloudy&quot;
+#双引号拼接
+today1=&quot;It is, &quot;$weather&quot; today&quot;
+today2=&quot;It is, $&#123;weather&#125; today&quot;
+echo $today1
+echo $today2
+#单引号拼接
+today3=&#39;It is, &#39;$weather&#39; today&#39;
+today4=&#39;It is, $&#123;weather&#125; today&#39;
+echo $today3
+echo $today4
+
+
+
+root@8c300f41b9f9:/home# ./test5.sh
+It is, cloudy today
+It is, cloudy today
+It is, cloudy today
+It is, $&#123;weather&#125; today
+</code></pre>
+<p>子字符串</p>
+<pre><code>root@8c300f41b9f9:/home# cat test6.sh
+#!/bin/bash
+
+string=&quot;It&#39;s cloudy today&quot;
+
+echo $&#123;#string&#125;                 #输出字符串的长度
+echo $&#123;string:5:6&#125;          #从第5个字符开始，截取6个输出
+echo `expr index &quot;$&#123;string&#125;&quot; d`     #查找d在字符串中首次出现的位置
+#expr 是一款表达式计算工具，使用它能完成表达式的求值操作
+
+
+root@8c300f41b9f9:/home# ./test6.sh
+17
+cloudy
+10
+</code></pre>
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><pre><code>root@8c300f41b9f9:/home# cat test7.sh
+#!/bin/bash
+
+array1=(a b c d e)      #定义方式1
+array2=(                            #定义方式2
+f
+g
+h
+i
+j
+)
+array3[0]=A                     #定义方式3
+array3[1]=B
+array3[2]=C
+
+echo $&#123;array1[3]&#125;           #输出
+val=$array2[1]
+echo  $val
+echo $&#123;array3[@]&#125;           #@表示输出全部
+
+
+root@8c300f41b9f9:/home# ./test7.sh
+d
+f[1]
+A B C
+</code></pre>
+<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><pre><code>root@8c300f41b9f9:/home# cat test8.sh
+
+#this is danhang zhushi
+
+:&lt;&lt;EOF
+one
+tow
+three
+EOF
+
+:&lt;&lt;&#39;
+one
+two
+three
+&#39;
+
+:&lt;&lt;!
+one
+two
+three
+!
+</code></pre>
+<h3 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h3><p>expr 是一款表达式计算工具，使用它能完成表达式的求值操作</p>
+<h4 id="算数运算"><a href="#算数运算" class="headerlink" title="算数运算"></a>算数运算</h4><pre><code>root@8c300f41b9f9:/home# cat test9.sh
+#!/bin/bash
+
+a=10
+b=20
+
+val=`expr $a + $b`
+echo &quot;a + b : $val&quot;
+
+val=`expr $a - $b`
+echo &quot;a - b : $val&quot;
+
+val=`expr $a \* $b`             #乘号(*)前边必须加反斜杠(\)才能实现乘法运算
+echo &quot;a * b : $val&quot;
+
+val=`expr $b / $a`
+echo &quot;b / a : $val&quot;
+
+val=`expr $b % $a`
+echo &quot;b % a : $val&quot;
+
+if [ $a == $b ]
+then
+   echo &quot;a =  b&quot;
+fi
+
+if [ $a != $b ]
+then
+   echo &quot;a != b&quot;
+fi
+
+
+root@8c300f41b9f9:/home# ./test9.sh
+a + b : 30
+a - b : -10
+a * b : 200
+b / a : 2
+b % a : 0
+a != b
+</code></pre>
+<h4 id="关系运算"><a href="#关系运算" class="headerlink" title="关系运算"></a>关系运算</h4><pre><code>root@8c300f41b9f9:/home# cat test10.sh
+#!/bin/bash
+
+a=10
+b=20
+
+if [ $a -eq $b ]        #是否等于
+then
+   echo &quot;$a -eq $b : a = b&quot;
+else
+   echo &quot;$a -eq $b: a != b&quot;
+fi
+if [ $a -ne $b ]        #是否不等
+then
+   echo &quot;$a -ne $b: a != b&quot;
+else
+   echo &quot;$a -ne $b : a = b&quot;
+fi
+if [ $a -gt $b ]        #是否大于
+then
+   echo &quot;$a -gt $b: a &gt; b&quot;
+else
+   echo &quot;$a -gt $b: a !&gt; b&quot;
+fi
+if [ $a -lt $b ]        #是否小于
+then
+   echo &quot;$a -lt $b: a &lt; b&quot;
+else
+   echo &quot;$a -lt $b: a !&lt; b&quot;
+fi
+if [ $a -ge $b ]        #是否大于等于
+then
+   echo &quot;$a -ge $b: a &gt;= b&quot;
+else
+   echo &quot;$a -ge $b: a &lt; b&quot;
+fi
+if [ $a -le $b ]        是否小于等于
+then
+   echo &quot;$a -le $b: a &lt;= b&quot;
+else
+   echo &quot;$a -le $b: a &gt; b&quot;
+fi
+
+
+root@8c300f41b9f9:/home# ./test10.sh
+10 -eq 20: a != b
+10 -ne 20: a != b
+10 -gt 20: a !&gt; b
+10 -lt 20: a &lt; b
+10 -ge 20: a &lt; b
+10 -le 20: a &lt;= b
+</code></pre>
+<h4 id="布尔运算"><a href="#布尔运算" class="headerlink" title="布尔运算"></a>布尔运算</h4><p>优先级为： <strong>!</strong> 最高， <strong>-a</strong> 次之， <strong>-o</strong> 最低</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>!</td>
+<td>非运算，表达式为 true 则返回 false，否则返回 true。</td>
+<td>[ ! false ] 返回 true。</td>
+</tr>
+<tr>
+<td>-o</td>
+<td>或运算，有一个表达式为 true 则返回 true。</td>
+<td>[ $a -lt 20 -o $b -gt 100 ] 返回 true。</td>
+</tr>
+<tr>
+<td>-a</td>
+<td>与运算，两个表达式都为 true 才返回 true。</td>
+<td>[ $a -lt 20 -a $b -gt 100 ] 返回 false。</td>
+</tr>
+</tbody></table>
+<pre><code>#!/bin/bash
+
+a=10
+b=20
+
+if [ $a != $b ]
+then
+   echo &quot;$a != $b : a 不等于 b&quot;
+else
+   echo &quot;$a == $b: a 等于 b&quot;
+fi
+if [ $a -lt 100 -a $b -gt 15 ]
+then
+   echo &quot;$a 小于 100 且 $b 大于 15 : 返回 true&quot;
+else
+   echo &quot;$a 小于 100 且 $b 大于 15 : 返回 false&quot;
+fi
+if [ $a -lt 100 -o $b -gt 100 ]
+then
+   echo &quot;$a 小于 100 或 $b 大于 100 : 返回 true&quot;
+else
+   echo &quot;$a 小于 100 或 $b 大于 100 : 返回 false&quot;
+fi
+if [ $a -lt 5 -o $b -gt 100 ]
+then
+   echo &quot;$a 小于 5 或 $b 大于 100 : 返回 true&quot;
+else
+   echo &quot;$a 小于 5 或 $b 大于 100 : 返回 false&quot;
+fi
+
+
+10 != 20 : a 不等于 b
+10 小于 100 且 20 大于 15 : 返回 true
+10 小于 100 或 20 大于 100 : 返回 true
+10 小于 5 或 20 大于 100 : 返回 false
+</code></pre>
+<h4 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h4><pre><code>#!/bin/bash
+
+a=10
+b=20
+
+if [[ $a -lt 100 &amp;&amp; $b -gt 100 ]]
+then
+   echo &quot;返回 true&quot;
+else
+   echo &quot;返回 false&quot;
+fi
+
+if [[ $a -lt 100 || $b -gt 100 ]]
+then
+   echo &quot;返回 true&quot;
+else
+   echo &quot;返回 false&quot;
+fi
+
+
+返回 false
+返回 true
+</code></pre>
+<h4 id="文件测试"><a href="#文件测试" class="headerlink" title="文件测试"></a>文件测试</h4><table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-b file</td>
+<td>检测文件是否是块设备文件，如果是，则返回 true。</td>
+<td>[ -b $file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-c file</td>
+<td>检测文件是否是字符设备文件，如果是，则返回 true。</td>
+<td>[ -c $file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-d file</td>
+<td>检测文件是否是目录，如果是，则返回 true。</td>
+<td>[ -d $file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-f file</td>
+<td>检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。</td>
+<td>[ -f $file ] 返回 true。</td>
+</tr>
+<tr>
+<td>-g file</td>
+<td>检测文件是否设置了 SGID 位，如果是，则返回 true。</td>
+<td>[ -g $file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-k file</td>
+<td>检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true。</td>
+<td>[ -k $file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-p file</td>
+<td>检测文件是否是有名管道，如果是，则返回 true。</td>
+<td>[ -p $file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-u file</td>
+<td>检测文件是否设置了 SUID 位，如果是，则返回 true。</td>
+<td>[ -u $file ] 返回 false。</td>
+</tr>
+<tr>
+<td>-r file</td>
+<td>检测文件是否可读，如果是，则返回 true。</td>
+<td>[ -r $file ] 返回 true。</td>
+</tr>
+<tr>
+<td>-w file</td>
+<td>检测文件是否可写，如果是，则返回 true。</td>
+<td>[ -w $file ] 返回 true。</td>
+</tr>
+<tr>
+<td>-x file</td>
+<td>检测文件是否可执行，如果是，则返回 true。</td>
+<td>[ -x $file ] 返回 true。</td>
+</tr>
+<tr>
+<td>-s file</td>
+<td>检测文件是否为空（文件大小是否大于0），不为空返回 true。</td>
+<td>[ -s $file ] 返回 true。</td>
+</tr>
+<tr>
+<td>-e file</td>
+<td>检测文件（包括目录）是否存在，如果是，则返回 true。</td>
+<td>[ -e $file ] 返回 true。</td>
+</tr>
+</tbody></table>
+<p><strong>/var/www/runoob/test.sh</strong>，它的大小为 100 字节，具有 <strong>rwx</strong> 权限</p>
+<pre><code>#!/bin/bash
+
+file=&quot;/var/www/runoob/test.sh&quot;
+if [ -r $file ]
+then
+   echo &quot;文件可读&quot;
+else
+   echo &quot;文件不可读&quot;
+fi
+if [ -w $file ]
+then
+   echo &quot;文件可写&quot;
+else
+   echo &quot;文件不可写&quot;
+fi
+if [ -x $file ]
+then
+   echo &quot;文件可执行&quot;
+else
+   echo &quot;文件不可执行&quot;
+fi
+if [ -f $file ]
+then
+   echo &quot;文件为普通文件&quot;
+else
+   echo &quot;文件为特殊文件&quot;
+fi
+if [ -d $file ]
+then
+   echo &quot;文件是个目录&quot;
+else
+   echo &quot;文件不是个目录&quot;
+fi
+if [ -s $file ]
+then
+   echo &quot;文件不为空&quot;
+else
+   echo &quot;文件为空&quot;
+fi
+if [ -e $file ]
+then
+   echo &quot;文件存在&quot;
+else
+   echo &quot;文件不存在&quot;
+fi
+
+
+
+文件可读
+文件可写
+文件可执行
+文件为普通文件
+文件不是个目录
+文件不为空
+文件存在
+</code></pre>
+<h3 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h3><h4 id="if条件语句"><a href="#if条件语句" class="headerlink" title="if条件语句"></a>if条件语句</h4><pre><code>root@8c300f41b9f9:/home# cat test11.sh
+#!/bin/bash
+a=5
+b=6
+
+if [ $a == $b ]
+then
+    echo &quot;=&quot;
+elif [ $a -gt $b ]
+then
+    echo &quot;&gt;&quot;
+else
+    echo &quot;&lt;&quot;
+fi
+
+
+root@8c300f41b9f9:/home# ./test11.sh
+&lt;
+
+#将以上代码写成一行
+root@8c300f41b9f9:/home# a=5; b=6; if [ $a == $b ]; then echo &quot;=&quot;; elif [ $a -gt $b ]; then echo &quot;&gt;&quot;; else echo &quot;&lt;&quot;; fi
+&lt;
+</code></pre>
+<h4 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h4><pre><code>root@8c300f41b9f9:/home# cat test12.sh
+#!/bin/bash
+for num in a bb ccc dddd eeeee
+do
+    echo $num
+done
+
+
+root@8c300f41b9f9:/home# ./test12.sh
+a
+bb
+ccc
+dddd
+eeeee
+
+#将以上代码写成一句
+root@8c300f41b9f9:/home# for num in a bb ccc dddd eeeee; do echo $num; done
+a
+bb
+ccc
+dddd
+eeeee
+</code></pre>
+<h4 id="while条件循环"><a href="#while条件循环" class="headerlink" title="while条件循环"></a>while条件循环</h4><p>let 命令是 BASH 中用于计算的工具，用于执行一个或多个表达式，变量计算中不需要加上 $ 来表示变量。如果表达式中包含了空格或其他特殊字符，则必须引起来。</p>
+<pre><code>root@8c300f41b9f9:/home# cat test13.sh
+#!/bin/bash
+num=10
+while(($num&lt;=15))
+do
+    echo $num
+    let &quot;num++&quot;
+done
+
+root@8c300f41b9f9:/home# ./test13.sh
+10
+11
+12
+13
+14
+15
+</code></pre>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h2 id="Shell运维命令"><a href="#Shell运维命令" class="headerlink" title="Shell运维命令"></a>Shell运维命令</h2><h3 id="安装工具"><a href="#安装工具" class="headerlink" title="安装工具"></a>安装工具</h3><p><strong>CentOS</strong></p>
+<p>yum</p>
+<p><strong>Ubuntu</strong></p>
+<p>apt</p>
+<p>网络相关</p>
+<p>文件相关</p>
 
                 
             </div>
@@ -445,7 +1118,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://tobyshawn.xyz/2021/06/11/Windows%20server%202012%20R2%E5%AE%89%E8%A3%85IIS/">https://tobyshawn.xyz/2021/06/11/Windows%20server%202012%20R2%E5%AE%89%E8%A3%85IIS/</a>
+                    <a href="https://tobyshawn.xyz/2021/08/30/Shell%E5%91%BD%E4%BB%A4/">https://tobyshawn.xyz/2021/08/30/Shell%E5%91%BD%E4%BB%A4/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -482,7 +1155,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/linux/">
+                                    <span class="chip bg-color">linux</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%BC%96%E7%A8%8B/">
+                                    <span class="chip bg-color">编程</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -651,7 +1332,7 @@
         repo: 'https://tobyshawn.xyz/',
         owner: 'tobyshawn',
         admin: null,
-        id: '2021-06-11T13-34-14',
+        id: '2021-08-30T09-58-17',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -679,17 +1360,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/08/27/Linux%E5%88%9D%E8%AE%A4%E8%AF%86/">
+                <a href="/2021/08/30/Shell%E5%91%BD%E4%BB%A4/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Linux的初认识">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Shell基础">
                         
-                        <span class="card-title">Linux的初认识</span>
+                        <span class="card-title">Shell基础</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -699,9 +1381,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-30
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -710,11 +1392,16 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
                     <a href="/tags/linux/">
                         <span class="chip bg-color">linux</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BC%96%E7%A8%8B/">
+                        <span class="chip bg-color">编程</span>
                     </a>
                     
                 </div>
@@ -728,23 +1415,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/08/CS%E9%92%93%E9%B1%BC%E9%82%AE%E4%BB%B6/">
+                <a href="/2021/08/28/Linux%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C2/">
                     <div class="card-image">
                         
-                        <img src="https://ts-bucker.oss-cn-hangzhou.aliyuncs.com/uPic/image-20210608133051591.png" class="responsive-img" alt="CS钓鱼邮件">
                         
-                        <span class="card-title">CS钓鱼邮件</span>
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Linux基本操作2">
+                        
+                        <span class="card-title">Linux基本操作2</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            网络+服务+软件管理
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-28
                             </span>
                         <span class="publish-author">
                             
@@ -757,12 +1445,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%BA%A2%E9%98%9F/">
-                        <span class="chip bg-color">红队</span>
-                    </a>
-                    
-                    <a href="/tags/cobalt-strike/">
-                        <span class="chip bg-color">cobalt strike</span>
+                    <a href="/tags/linux/">
+                        <span class="chip bg-color">linux</span>
                     </a>
                     
                 </div>
