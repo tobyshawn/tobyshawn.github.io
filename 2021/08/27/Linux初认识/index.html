@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="docker初学习, 舒舒舒的摸鱼台">
+    <meta name="keywords" content="Linux的初认识, 舒舒舒的摸鱼台">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>docker初学习 | 舒舒舒的摸鱼台</title>
+    <title>Linux的初认识 | 舒舒舒的摸鱼台</title>
     <link rel="icon" type="image/jpeg" href="/favicon.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -225,12 +225,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://ts-bucker.oss-cn-hangzhou.aliyuncs.com/uPic/image-20210603104858557.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">docker初学习</h1>
+                    <h1 class="description center-align post-title">Linux的初认识</h1>
                 </div>
             </div>
         </div>
@@ -346,27 +346,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/docker/">
-                                <span class="chip bg-color">docker</span>
-                            </a>
-                        
-                            <a href="/tags/linux/">
-                                <span class="chip bg-color">linux</span>
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                日常学习
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -375,21 +362,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-06-06
+                    2021-08-27
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-08-27
+                    2021-08-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.9k
+                    1.5k
                 </div>
                 
 
@@ -411,234 +398,103 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本篇只是自己学习笔记，宿主机Ubuntu18.04和centos7混用，可能导致部分系统命令有出入，但是docker相关的命令无影响。docker info version logs等命令不再列出。目前为一些基础操作，可能后续还会增加，可能也会鸽了。有错误或者疑问欢迎提出讨论。</p>
-<h1 id="镜像操作"><a href="#镜像操作" class="headerlink" title="镜像操作"></a>镜像操作</h1><h2 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h2><p><a target="_blank" rel="noopener" href="https://cr.console.aliyun.com/">https://cr.console.aliyun.com/</a><br>首页点击“创建我的容器镜像” 得到一个专属的镜像加速地址</p>
-<p>Docker中国区官方镜像<br><a target="_blank" rel="noopener" href="https://registry.docker-cn.com/">https://registry.docker-cn.com</a></p>
-<p>网易<br><a target="_blank" rel="noopener" href="http://hub-mirror.c.163.com/">http://hub-mirror.c.163.com</a></p>
-<pre class=" language-shell"><code class="language-shell">root@ubuntu:/home/shawn# vi /etc/docker/daemon.json
-root@ubuntu:/home/shawn# cat /etc/docker/daemon.json 
-&#123;
-        "registry-mirrors": ["https://o1260yxa.mirror.aliyuncs.com"]
-&#125;
-root@ubuntu:/home/shawn# service docker restart
-root@ubuntu:/home/shawn# docker info
-...
- Labels:
- Experimental: false
- Insecure Registries:
-  127.0.0.0/8
- Registry Mirrors:
-  https://o1260yxa.mirror.aliyuncs.com/
- Live Restore Enabled: false
- ...
-</code></pre>
-<h2 id="搜索镜像"><a href="#搜索镜像" class="headerlink" title="搜索镜像"></a>搜索镜像</h2><h3 id="1、docker-hub"><a href="#1、docker-hub" class="headerlink" title="1、docker  hub"></a>1、docker  hub</h3><p><img src="https://ts-bucker.oss-cn-hangzhou.aliyuncs.com/uPic/image-20210603104858557.png" alt="image-20210603104858557"></p>
-<h3 id="2、docker-search"><a href="#2、docker-search" class="headerlink" title="2、docker search"></a>2、docker search</h3><p>使用docker search xxx[:tag]命令，也可以带tag搜索</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker search ubuntu
-NAME                                                      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
-ubuntu                                                    Ubuntu is a Debian-based Linux operating sys…   12321     [OK]       
-dorowu/ubuntu-desktop-lxde-vnc                            Docker image to provide HTML5 VNC interface …   538                  [OK]
-websphere-liberty                                         WebSphere Liberty multi-architecture images …   273       [OK]       
-rastasheep/ubuntu-sshd                                    Dockerized SSH service, built on top of offi…   253                  [OK]
-consol/ubuntu-xfce-vnc                                    Ubuntu container with "headless" VNC session…   240                  [OK]
-ubuntu-upstart                                            Upstart is an event-based replacement for th…   110       [OK]       
-1and1internet/ubuntu-16-nginx-php-phpmyadmin-mysql-5      ubuntu-16-nginx-php-phpmyadmin-mysql-5          50                   [OK]
-open-liberty                                              Open Liberty multi-architecture images based…   46        [OK]       
-ubuntu-debootstrap                                        debootstrap --variant=minbase --components=m…   44        [OK]       
-i386/ubuntu                                               Ubuntu is a Debian-based Linux operating sys…   25                   
-solita/ubuntu-systemd                                     Ubuntu + systemd                                24                   [OK]
-1and1internet/ubuntu-16-apache-php-5.6                    ubuntu-16-apache-php-5.6                        14                   [OK]
-</code></pre>
-<h2 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h2><p>docker pull xxx:tag</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker pull centos:7
-7: Pulling from library/centos
-2d473b07cdd5: Pull complete 
-Digest: sha256:0f4ec88e21daf75124b8a9e5ca03c37a5e937e0e108a255d890492430789b60e
-Status: Downloaded newer image for centos:7
-docker.io/library/centos:7
-</code></pre>
-<h2 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h2><p>docker images</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker images
-REPOSITORY                        TAG             IMAGE ID       CREATED          SIZE
-seacms                            v6.61           17720ee28ffb   39 minutes ago   739MB
-seacms                            demo            bbc3a9befb03   42 minutes ago   739MB
-seacms                            v6.1            294c32f9d5b1   18 hours ago     705MB
-drupal_7.57                       cve-2018-7602   7b8d148f180b   25 hours ago     405MB
-drupal_8.3.0                      cve-2017-6920   5c4fe0f07e90   26 hours ago     691MB
-wordpress4.7                      cve-2017-5487   f620e62f2ca8   26 hours ago     946MB
-tobyshawn/ubuntu16_04_lamp        v1              c231de98bb36   2 days ago       602MB
-vulfocus/seacms-cnvd_2020_22721   latest          f4dccf30c280   10 days ago      585MB
-ubuntu                            16.04           9ff95a467e45   2 weeks ago      135MB
-secfa/docker-awvs                 latest          cd2a9f00863a   3 weeks ago      1.06GB
-centos                            7               8652b9f0cb4c   6 months ago     204MB
-drupal                            7.57            79c9b34e01cf   3 years ago      403MB
-drupal                            8.3.0           4e47ab49efee   4 years ago      445MB
-</code></pre>
-<h2 id="导出镜像"><a href="#导出镜像" class="headerlink" title="导出镜像"></a>导出镜像</h2><pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker save seacms:v6.61 > seacms_v6.61.tar
-[root@localhost /]# ls
-seacms_v6.61.tar  
-</code></pre>
-<h2 id="导入镜像"><a href="#导入镜像" class="headerlink" title="导入镜像"></a>导入镜像</h2><p>docker load &lt; tar包</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker load < dircms_2011-sp3-utf8.tar
-239bf11460ef: Loading layer [==================================================>]  47.15MB/47.15MB
-Loaded image: dircms:2011-sp3-utf8
-[root@localhost /]# docker images
-REPOSITORY                        TAG             IMAGE ID       CREATED        SIZE
-dircms                            2011-sp3-utf8   8a9c43e51650   18 hours ago   785MB
-</code></pre>
-<p>使用load导入的镜像不支持改名</p>
-<p>（建议save导出的镜像用load导入，export导出的镜像用import导入，不要混用）</p>
-<h1 id="容器操作"><a href="#容器操作" class="headerlink" title="容器操作"></a>容器操作</h1><h2 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h2><p>docker run -it 镜像名:tag [command]</p>
-<p>-i：交互式操作</p>
-<p>-t：终端</p>
-<p>-d：后台运行，不进入终端</p>
-<p>-p：指定端口映射，如8080:80的意思是将容器的80端口映射到宿主机上，访问宿主机的8080端口即可访问容器的80端口</p>
-<p>[command]：/bin/bash、/bin/sh，看需求，在进入容器时执行的命令，也可以自己写上指定脚本用于运行</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker run -it -p 8080:80 centos:7
-[root@87369de718c8 /]# ls
-anaconda-post.log  bin  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
-[root@87369de718c8 /]# pwd
-/
-[root@87369de718c8 /]# whoami;id
-root
-uid=0(root) gid=0(root)
-</code></pre>
-<h2 id="启动、停止、重启容器"><a href="#启动、停止、重启容器" class="headerlink" title="启动、停止、重启容器"></a>启动、停止、重启容器</h2><p>启动已有容器的命令为docker start 容器id</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker start 625dcd1bf772
-625dcd1bf772
-</code></pre>
-<h2 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h2><p>对于后台运行的容器（-d参数创建的容器，或是start已存在的容器），需要进入容器时有两种方法</p>
-<h3 id="1、docker-attach"><a href="#1、docker-attach" class="headerlink" title="1、docker attach"></a>1、docker attach</h3><p>docker attach 容器id   #exit时会停止容器（进⼊⼀个容器正在执⾏的终端）</p>
-<h3 id="2、docker-exec"><a href="#2、docker-exec" class="headerlink" title="2、docker exec"></a>2、docker exec</h3><p>docker exec -it 容器id /bin/bash  #exit时不会停止容器（进⼊容器新开⼀个终端）</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker exec -it 625dcd1bf772 /bin/bash
-root@625dcd1bf772:/# 
-</code></pre>
-<h2 id="容器保存成镜像"><a href="#容器保存成镜像" class="headerlink" title="容器保存成镜像"></a>容器保存成镜像</h2><p>docker commit 容器ID 镜像名</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker commit 28a8e3c0c9dd dircms_demo
-sha256:47249d0234ee9b962ff1121589bf5365746b614f51c72f33e78f3a51c48ca704
-[root@localhost /]# docker images
-REPOSITORY                        TAG             IMAGE ID       CREATED         SIZE
-dircms_demo                       latest          47249d0234ee   7 seconds ago   783MB
-</code></pre>
-<h2 id="容器导出为镜像"><a href="#容器导出为镜像" class="headerlink" title="容器导出为镜像"></a>容器导出为镜像</h2><p>docker export 容器id &gt; name.tar</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker export 625dcd1bf772 > name.tar
-[root@localhost /]# ll
-总用量 2994444
--rw-r--r--.   1 root root 613240832 6月   4 14:50 name.tar
-</code></pre>
-<h2 id="容器快照文件导入为镜像"><a href="#容器快照文件导入为镜像" class="headerlink" title="容器快照文件导入为镜像"></a>容器快照文件导入为镜像</h2><p>docker import 容器文件 镜像名</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker import name.tar name:test
-sha256:8feb4db4855da4aa9de16cbd57088d4946b8a2844a91737444ae3fe5ab1990c3
-[root@localhost /]# docker images
-REPOSITORY                   TAG             IMAGE ID       CREATED             SIZE
-name                         test            8feb4db4855d   6 seconds ago       602MB
-</code></pre>
-<p>使用import导入的镜像可以指定镜像名与tag</p>
-<p>（建议save导出的镜像用load导入，export导出的镜像用import导入，不要混用）</p>
-<h2 id="容器改名"><a href="#容器改名" class="headerlink" title="容器改名"></a>容器改名</h2><p>docker rename old_name new_name</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker ps -a
-CONTAINER ID   IMAGE                           COMMAND                  CREATED             STATUS                         PORTS     NAMES
-87369de718c8   centos:7                        "/bin/bash"              22 minutes ago      Exited (127) 6 seconds ago               dazzling_ritchie
-[root@localhost /]# docker rename dazzling_ritchie rubbish
-[root@localhost /]# docker ps -a
-CONTAINER ID   IMAGE                           COMMAND                  CREATED             STATUS                         PORTS     NAMES
-87369de718c8   centos:7                        "/bin/bash"              23 minutes ago      Exited (127) 55 seconds ago              rubbis
-</code></pre>
-<p><img src="https://ts-bucker.oss-cn-hangzhou.aliyuncs.com/uPic/image-20210603113831463.png" alt="image-20210603113831463"></p>
-<h2 id="容器与宿主机文件拷贝"><a href="#容器与宿主机文件拷贝" class="headerlink" title="容器与宿主机文件拷贝"></a>容器与宿主机文件拷贝</h2><p>docker cp 文件 容器名：容器内路径</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker cp dircms_sp3_gbk.zip vigilant_mayer:/var/www/html
-</code></pre>
-<pre class=" language-shell"><code class="language-shell">root@43dd7ab25a68:/var/www/html# ls
-root@43dd7ab25a68:/var/www/html# ls
-dircms_sp3_gbk.zip
-</code></pre>
-<h2 id="容器内服务自启"><a href="#容器内服务自启" class="headerlink" title="容器内服务自启"></a>容器内服务自启</h2><p>制作完docker镜像后发现，每次新建容器或者重启容器，服务都不会自动起来，比如我搭建的cms，而apache2服务和mysql每次都是关闭的状态，还需要重新去开启，就很麻烦，因此希望容器内的服务能够随着容器的启动而启动。</p>
-<h3 id="目前情况"><a href="#目前情况" class="headerlink" title="目前情况"></a>目前情况</h3><pre class=" language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost test<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># docker start f1909ca90a08 </span>
-f1909ca90a08
-<span class="token punctuation">[</span>root@localhost test<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># docker exec -it f1909ca90a08 /bin/bash</span>
-root@f1909ca90a08:/<span class="token comment" spellcheck="true"># service apache2 status </span>
- * apache2 is not running
-root@f1909ca90a08:/<span class="token comment" spellcheck="true"># service mysql status </span>
- * MySQL is stopped.
-</code></pre>
-<h3 id="操作过程"><a href="#操作过程" class="headerlink" title="操作过程"></a>操作过程</h3><p>在docker容器内写入sh，并赋予执行权限</p>
-<p>命令根据自己的要求更改，最后留着/bin/bash是为了保留终端</p>
-<p>(如果是打包集成环境，不需要终端操作而只是开启后后台运行的话，建议将/bin/bash 改成 tail -f /dev/null，因为)</p>
-<pre class=" language-shell"><code class="language-shell">root@f1909ca90a08:/# vi /etc/apache2/auto_start.sh
-root@f1909ca90a08:/# cat /etc/apache2/auto_start.sh 
-service apache2 start 
-service mysql start
-/bin/bash
-root@f1909ca90a08:/# chmod 777 /etc/apache2/auto_start.sh
-</code></pre>
-<p>退出容器，并关闭，保存为镜像</p>
-<pre class=" language-shell"><code class="language-shell">root@f1909ca90a08:/# exit
-exit
-[root@localhost test]# docker ps 
-CONTAINER ID   IMAGE         COMMAND       CREATED             STATUS         PORTS                                             NAMES
-f1909ca90a08   seacms:v6.1   "/bin/bash"   About an hour ago   Up 5 minutes   3306/tcp, 0.0.0.0:8080->80/tcp, :::8080->80/tcp   mystifying_bose
-[root@localhost test]# docker stop f1909ca90a08
-f1909ca90a08
-[root@localhost test]# docker commit f1909ca90a08 seacms:demo
-sha256:bbc3a9befb0323272f2889d6ce9d4cf3a1c20270f3fb765325252ae6fbcc8a88
-[root@localhost test]# 
-</code></pre>
-<p>在一个*<u><strong>空目录</strong></u>*下，创建Dockerfile</p>
-<p>FROM 指定基础镜像</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost test]# ls
-[root@localhost test]# vi Dockerfile
-[root@localhost test]# cat Dockerfile 
-From seacms:demo
+                <h1 id="Linux发展史"><a href="#Linux发展史" class="headerlink" title="Linux发展史"></a>Linux发展史</h1><p>自行了解</p>
+<h1 id="Linux介绍"><a href="#Linux介绍" class="headerlink" title="Linux介绍"></a>Linux介绍</h1><p>Linux优点</p>
+<ul>
+<li>开放</li>
+<li>可靠</li>
+<li>安全</li>
+<li>稳定</li>
+<li>多平台</li>
+<li>多用户</li>
+</ul>
+<h1 id="Linux组成"><a href="#Linux组成" class="headerlink" title="Linux组成"></a>Linux组成</h1><ul>
+<li>Linux内核<ul>
+<li>内核是操作系统的核心，具有很多最基本功能，它负责管理系统的进程、内存、设备驱动程序、文件和网络系统，决定着系统的性能和稳定性。</li>
+</ul>
+</li>
+<li>Shell<ul>
+<li>Shell是系统的用户界面，提供了用户与内核进行交互操作的一种接口，它接收用户输入的命令并把它送入内核去执行，是一个命令解释器。</li>
+</ul>
+</li>
+<li>文件系统<ul>
+<li>是文件存放在磁盘等存储设备上的组织方法，linux是开放性的，能够支持多种异构的文件系统，如ext2,ext3,fat,vfat(fat32),ISO9660,nfs等。</li>
+</ul>
+</li>
+<li>应用系统<ul>
+<li>标准的linux系统都有一整套成为应用程序的程序集，包括文本编辑器、办公套件、数据库等</li>
+</ul>
+</li>
+</ul>
+<h1 id="Linux目录结构"><a href="#Linux目录结构" class="headerlink" title="Linux目录结构"></a>Linux目录结构</h1><img src="https://ts-bucker.oss-cn-hangzhou.aliyuncs.com/uPic/image-20210827170023890.png" alt="image-20210827170023890" style="zoom:100%;" />
 
-CMD ["/bin/sh","/etc/apache2/auto_start.sh"]
-[root@localhost test]# 
+<ul>
+<li><p><strong>/bin</strong>：<br>bin 是 Binaries (二进制文件) 的缩写, 这个目录存放着最经常使用的<strong>命令</strong>。</p>
+</li>
+<li><p><strong>/boot：</strong><br>这里存放的是启动 Linux 时使用的一些<strong>核心文件</strong>，包括一些连接文件以及镜像文件。</p>
+</li>
+<li><p><strong>/dev ：</strong><br>dev 是 Device(设备) 的缩写, 该目录下存放的是 Linux 的<strong>外部设备</strong>，在 Linux 中访问设备的方式和访问文件的方式是相同的。</p>
+</li>
+<li><p><strong>/etc：</strong><br>etc 是 Etcetera(等等) 的缩写,这个目录用来存放所有的系统管理所需要的<strong>配置文件</strong>和子目录。</p>
+</li>
+<li><p><strong>/home</strong>：<br><strong>用户</strong>的主目录，在 Linux 中，每个用户都有一个自己的目录，一般该目录名是以用户的账号命名的。</p>
+</li>
+<li><p><strong>/lib</strong>：<br>lib 是 Library(库) 的缩写这个目录里存放着系统最基本的<strong>动态连接共享库</strong>，其作用类似于 Windows 里的 DLL 文件。几乎所有的应用程序都需要用到这些共享库。</p>
+</li>
+<li><p><strong>/media</strong>：<br>linux 系统<strong>自动识别的设备</strong>，例如U盘、光驱等等，当识别后，Linux 会把识别的设备挂载到这个目录下。</p>
+</li>
+<li><p><strong>/mnt</strong>：<br>系统提供该目录是为了让用户临时<strong>挂载</strong>别的文件系统的，我们可以将光驱挂载在 /mnt/ 上，然后进入该目录就可以查看光驱里的内容了。</p>
+</li>
+<li><p><strong>/opt</strong>：<br>opt 是 optional(可选) 的缩写，这是给主机额外安装软件所摆放的目录。比如你安装一个ORACLE数据库则就可以放到这个目录下。默认是空的。</p>
+</li>
+<li><p><strong>/proc</strong>：<br>proc 是 Processes(进程) 的缩写，/proc 是一种伪文件系统（也即虚拟文件系统），存储的是当前内核运行状态的一系列特殊文件，这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。<br>这个目录的内容不在硬盘上而是在内存里，我们也可以直接修改里面的某些文件，比如可以通过下面的命令来屏蔽主机的ping命令，使别人无法ping你的机器：</p>
+<pre><code>echo 1 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_all
 </code></pre>
-<p>通过Dockerfile构建新的镜像</p>
-<p>-t指定最终镜像名，需要跟地址，这里使用的是 “**.**” ，也就是当前目录</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost test]# docker build -t seacms:v6.61 .
-Sending build context to Docker daemon  2.048kB
-Step 1/2 : From seacms:demo
- ---> bbc3a9befb03
-Step 2/2 : CMD ["/bin/sh","/etc/apache2/auto_start.sh"]
- ---> Running in ec97dd1c1b8d
-Removing intermediate container ec97dd1c1b8d
- ---> 17720ee28ffb
-Successfully built 17720ee28ffb
-Successfully tagged seacms:v6.61
-[root@localhost test]# 
+</li>
+<li><p><strong>/root</strong>：<br>该目录为系统管理员，也称作超级权限者的用户主目录。</p>
+</li>
+<li><p><strong>/sbin</strong>：<br>s 就是 Super User 的意思，是 Superuser Binaries (超级用户的二进制文件) 的缩写，这里存放的是系统管理员使用的系统管理程序。</p>
+</li>
+<li><p><strong>/sys</strong>：</p>
+<p>这是 Linux2.6 内核的一个很大的变化。该目录下安装了 2.6 内核中新出现的一个文件系统 sysfs 。</p>
+<p>sysfs 文件系统集成了下面3种文件系统的信息：针对进程信息的 proc 文件系统、针对设备的 devfs 文件系统以及针对伪终端的 devpts 文件系统。</p>
+<p>该文件系统是内核设备树的一个直观反映。</p>
+<p>当一个内核对象被创建的时候，对应的文件和目录也在内核对象子系统中被创建。</p>
+</li>
+<li><p><strong>/tmp</strong>：<br>tmp 是 temporary(临时) 的缩写这个目录是用来存放一些临时文件的。</p>
+</li>
+<li><p><strong>/usr</strong>：<br> usr 是 unix shared resources(共享资源) 的缩写，这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似于 windows 下的 program files 目录。</p>
+</li>
+<li><p><strong>/var</strong>：<br>var 是 variable(变量) 的缩写，这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。</p>
+</li>
+<li><p><strong>/run</strong>：<br>是一个临时文件系统，存储系统启动以来的信息。当系统重启时，这个目录下的文件应该被删掉或清除。如果你的系统上有 /var/run 目录，应该让它指向 run。</p>
+</li>
+<li><p><del><strong>/selinux</strong>：</del><br><del>这个目录是 Redhat/CentOS 所特有的目录，Selinux 是一个安全机制，类似于 windows 的防火墙，但是这套机制比较复杂，这个目录就是存放selinux相关的文件的。</del></p>
+</li>
+<li><p><del><strong>/srv</strong>：</del><br><del>该目录存放一些服务启动之后需要提取的数据。</del></p>
+</li>
+<li><p><del><strong>/lost+found</strong>：</del><br><del>这个目录一般情况下是空的，当系统非法关机后，这里就存放了一些文件。</del></p>
+</li>
+</ul>
+<h1 id="基本认识"><a href="#基本认识" class="headerlink" title="基本认识"></a>基本认识</h1><h2 id="shell认识"><a href="#shell认识" class="headerlink" title="shell认识"></a>shell认识</h2><pre class=" language-shell"><code class="language-shell">[root@localhost ~]#
 </code></pre>
-<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>用新的镜像创建容器</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost test]# docker images
-REPOSITORY                        TAG             IMAGE ID       CREATED              SIZE
-seacms                            v6.61           17720ee28ffb   About a minute ago   739MB
-seacms                            demo            bbc3a9befb03   4 minutes ago        739MB
-seacms                            v6.1            294c32f9d5b1   17 hours ago         705MB
-[root@localhost test]# docker run -it -p 8080:80 seacms:v6.61
- * Starting web server apache2                                                                                                                                                               AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
- * 
- * Starting MySQL database server mysqld                                                                                                                                              [ OK ] 
- * Checking for tables which need an upgrade, are corrupt or were 
-not closed cleanly.
-root@87da08c8d005:/# service apache2 status
- * apache2 is running
-root@87da08c8d005:/# service mysql status
- * /usr/bin/mysqladmin  Ver 8.42 Distrib 5.5.60, for debian-linux-gnu on x86_64
-Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
-
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
-owners.
-
-Server version        5.5.60-0ubuntu0.14.04.1
-Protocol version    10
-Connection        Localhost via UNIX socket
-UNIX socket        /var/run/mysqld/mysqld.sock
-Uptime:            17 sec
-
-Threads: 1  Questions: 212  Slow queries: 0  Opens: 82  Flush tables: 1  Open tables: 75  Queries per second avg: 12.470
-root@87da08c8d005:/#
-</code></pre>
-<p>此时服务已经随着容器的启动而启动了</p>
+<ul>
+<li>root：当前用户</li>
+<li>localhost：主机名</li>
+<li>～：目录（～为家目录，/为根目录）</li>
+<li>#：用户表示（#为超级用户，$为普通用户）</li>
+</ul>
+<h2 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h2><p>命令名称 【选项】【参数】</p>
+<p>如：ls -a /root    (查看/root目录下的文件)</p>
+<p>注意：命令名称、选项、参数之间要用空格隔开，</p>
+<h2 id="基本守则"><a href="#基本守则" class="headerlink" title="基本守则"></a>基本守则</h2><ul>
+<li>Linux系统大小写敏感</li>
+<li>文件名前面带”.”是隐藏文件</li>
+<li>linux系统下的”/”相当于DOS下的”\”</li>
+<li>配置文件#开头代表是注释行，程序不执行该行</li>
+<li>“\”放在命令最后，说明下行的命令接在此行的后面</li>
+<li>转译字符“\”，将特殊字符转换成普通字符（“\”也可以是单或双引号），如：空格、@、$等</li>
+</ul>
 
                 
             </div>
@@ -665,7 +521,7 @@ root@87da08c8d005:/#
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://tobyshawn.xyz/2021/06/06/docker%E5%88%9D%E5%AD%A6%E4%B9%A0/">https://tobyshawn.xyz/2021/06/06/docker%E5%88%9D%E5%AD%A6%E4%B9%A0/</a>
+                    <a href="https://tobyshawn.xyz/2021/08/27/Linux%E5%88%9D%E8%AE%A4%E8%AF%86/">https://tobyshawn.xyz/2021/08/27/Linux%E5%88%9D%E8%AE%A4%E8%AF%86/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -703,12 +559,8 @@ root@87da08c8d005:/#
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/docker/">
-                                    <span class="chip bg-color">docker</span>
-                                </a>
-                            
-                                <a href="/tags/linux/">
-                                    <span class="chip bg-color">linux</span>
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
                                 </a>
                             
                         </div>
@@ -879,7 +731,7 @@ root@87da08c8d005:/#
         repo: 'https://tobyshawn.xyz/',
         owner: 'tobyshawn',
         admin: null,
-        id: '2021-06-06T11-18-26',
+        id: '2021-08-27T16-42-21',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -911,23 +763,24 @@ root@87da08c8d005:/#
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/06/08/CS%E9%92%93%E9%B1%BC%E9%82%AE%E4%BB%B6/">
+                <a href="/2021/08/27/Linux%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C1/">
                     <div class="card-image">
                         
-                        <img src="https://ts-bucker.oss-cn-hangzhou.aliyuncs.com/uPic/image-20210608133051591.png" class="responsive-img" alt="CS钓鱼邮件">
                         
-                        <span class="card-title">CS钓鱼邮件</span>
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Linux基础操作1">
+                        
+                        <span class="card-title">Linux基础操作1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            文件目录操作+搜索+压缩+文本操作
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-08
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-27
                         </span>
                         <span class="publish-author">
                             
@@ -940,12 +793,8 @@ root@87da08c8d005:/#
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%BA%A2%E9%98%9F/">
-                        <span class="chip bg-color">红队</span>
-                    </a>
-                    
-                    <a href="/tags/cobalt-strike/">
-                        <span class="chip bg-color">cobalt strike</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>
@@ -956,51 +805,35 @@ root@87da08c8d005:/#
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/06/docker%E5%88%9D%E5%AD%A6%E4%B9%A0/">
+                <a href="/2021/06/11/Windows%20server%202012%20R2%E5%AE%89%E8%A3%85IIS/">
                     <div class="card-image">
                         
-                        <img src="https://ts-bucker.oss-cn-hangzhou.aliyuncs.com/uPic/image-20210603104858557.png" class="responsive-img" alt="docker初学习">
                         
-                        <span class="card-title">docker初学习</span>
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            IIS的配置相比Linux下中间件的配置稍微麻烦一丢丢，简单记录一下
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-11
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    日常学习
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            tobyshawn
                             
                         </span>
                     </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/docker/">
-                        <span class="chip bg-color">docker</span>
-                    </a>
-                    
-                    <a href="/tags/linux/">
-                        <span class="chip bg-color">linux</span>
-                    </a>
-                    
                 </div>
                 
             </div>
