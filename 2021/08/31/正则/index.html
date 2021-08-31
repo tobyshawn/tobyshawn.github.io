@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="docker初学习, 舒舒舒的摸鱼台">
+    <meta name="keywords" content="正则初学习, 舒舒舒的摸鱼台">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>docker初学习 | 舒舒舒的摸鱼台</title>
+    <title>正则初学习 | 舒舒舒的摸鱼台</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -225,12 +225,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://ts-bucker.oss-cn-hangzhou.aliyuncs.com/uPic/image-20210603104858557.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">docker初学习</h1>
+                    <h1 class="description center-align post-title">正则初学习</h1>
                 </div>
             </div>
         </div>
@@ -344,29 +344,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/linux/">
-                                <span class="chip bg-color">linux</span>
-                            </a>
-                        
-                            <a href="/tags/docker/">
-                                <span class="chip bg-color">docker</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                日常学习
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -375,21 +358,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-06-06
+                    2021-08-31
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-08-27
+                    2021-08-31
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.9k
+                    1k
                 </div>
                 
 
@@ -411,234 +394,267 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本篇只是自己学习笔记，宿主机Ubuntu18.04和centos7混用，可能导致部分系统命令有出入，但是docker相关的命令无影响。docker info version logs等命令不再列出。目前为一些基础操作，可能后续还会增加，可能也会鸽了。有错误或者疑问欢迎提出讨论。</p>
-<h1 id="镜像操作"><a href="#镜像操作" class="headerlink" title="镜像操作"></a>镜像操作</h1><h2 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h2><p><a target="_blank" rel="noopener" href="https://cr.console.aliyun.com/">https://cr.console.aliyun.com/</a><br>首页点击“创建我的容器镜像” 得到一个专属的镜像加速地址</p>
-<p>Docker中国区官方镜像<br><a target="_blank" rel="noopener" href="https://registry.docker-cn.com/">https://registry.docker-cn.com</a></p>
-<p>网易<br><a target="_blank" rel="noopener" href="http://hub-mirror.c.163.com/">http://hub-mirror.c.163.com</a></p>
-<pre class=" language-shell"><code class="language-shell">root@ubuntu:/home/shawn# vi /etc/docker/daemon.json
-root@ubuntu:/home/shawn# cat /etc/docker/daemon.json 
-&#123;
-        "registry-mirrors": ["https://o1260yxa.mirror.aliyuncs.com"]
-&#125;
-root@ubuntu:/home/shawn# service docker restart
-root@ubuntu:/home/shawn# docker info
-...
- Labels:
- Experimental: false
- Insecure Registries:
-  127.0.0.0/8
- Registry Mirrors:
-  https://o1260yxa.mirror.aliyuncs.com/
- Live Restore Enabled: false
- ...
+                <h1 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h1><p>正则表达式(regular expression)描述了一种字符串匹配的模式（pattern），可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。</p>
+<p>构造正则表达式的方法和创建数学表达式的方法一样。也就是用多种元字符与运算符可以将小的表达式结合在一起来创建更大的表达式。正则表达式的组件可以是单个的字符、字符集合、字符范围、字符间的选择或者所有这些组件的任意组合。</p>
+<p>正则表达式是由普通字符（例如字符 a 到 z）以及特殊字符（称为”元字符”）组成的文字模式。模式描述在搜索文本时要匹配的一个或多个字符串。正则表达式作为一个模板，将某个字符模式与所搜索的字符串进行匹配。</p>
+<h1 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h1><h2 id="普通字符"><a href="#普通字符" class="headerlink" title="普通字符"></a>普通字符</h2><p>[…]：匹配中括号其中的所有字符</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627522016780-b14d5e7b-79f8-409c-a413-bb8d192ca220.png" alt="img"></p>
+<p>[^…]：匹配除中括号中的所有字符</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627522067978-18d492e5-4944-4a5d-9924-a23608e9efc1.png" alt="img"></p>
+<p>[A-Z]：匹配区间范围内的所有字符</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627522128767-0d5fd8e4-dda1-4ba0-b9a4-84ff5ab502c2.png" alt="img"></p>
+<p>.  ：匹配除换行符（\r,\n）之外的任何单个字符</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627522325660-aab05ce0-323e-42a6-9a27-2221b3dde98b.png" alt="img"></p>
+<p>[\s\S]：匹配所有字符。\s是匹配所有空白，包括换行，\S是匹配所有非空白，除换行</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627522664091-5a3029f1-10b5-4368-b5dc-388264eed8f5.png" alt="img"></p>
+<p>\w：匹配字母、数字、下划线</p>
+<h2 id="非打印字符"><a href="#非打印字符" class="headerlink" title="非打印字符"></a>非打印字符</h2><p>\f：匹配换页符</p>
+<p>\n：匹配换行符</p>
+<p>\r：匹配回车符</p>
+<p>\t：匹配制表符</p>
+<p>\v：匹配垂直制表符</p>
+<p>\s：匹配空白字符，包括空格、换页、换行、制表，等价于[\f\n\r\t\v]</p>
+<p>\S：匹配非空白字符，等价于[^\f\n\r\t\v]</p>
+<h2 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h2><p>()：括起的内容作为子表达式，必须连在一起匹配</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627523940268-a1e38616-dda3-41dd-9ba9-d23fd4ebedfe.png" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th>(ap)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Dbapp AhDs TobyShawn shape</td>
+</tr>
+</tbody></table>
+<p>[]：表示表达式的开始与结束，只出现一次</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627524200460-4b2fda93-2303-4f84-94be-7163d786fffe.png" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th>[0-9]h</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Dbapp AhDs TobyS32131h2hhawn shape\n\r32789h131c</td>
+</tr>
+</tbody></table>
+<p>{}：一般用来匹配长度，详细见限定符解释</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627524482198-99423d60-3003-4ce7-8e31-ac8dbc862e3a.png" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th>([0-9]h){2}</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Dbapp AhDs TobyS32131h2hhawn shape\n\r32789h131c</td>
+</tr>
+</tbody></table>
+<p>+：匹配+前的字符串一次或多次</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627524928732-41208416-806d-4b57-b8ce-6c1310c50f52.png" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th>Dba[p]+</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Dbapp Dbap Dba</td>
+</tr>
+</tbody></table>
+<p><em>：匹配</em>前的字符串零次或多次</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627525008832-73963cc1-5a3a-4af1-b2bb-57903e121066.png" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th>Dba[p]*</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Dbapp Dbap Dba Db</td>
+</tr>
+</tbody></table>
+<p>?：匹配?前的字符串零次或一次</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627525135613-d461d17d-b00b-4151-afed-aeffb1890507.png" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th>Dba[p]?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Dbappp Dbapp DbapDba</td>
+</tr>
+</tbody></table>
+<p>^：表示开始，如果在中括号中使用表示非</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627525337631-1e1b4c8b-486a-4200-83f6-bf9e3a426a1e.png" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th>^Dba</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Dbappp Dbapp Dbap Dba</td>
+</tr>
+</tbody></table>
+<p>$：表示结束</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627525385436-340c830a-e179-4a27-a7e8-46966c49e998.png" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th>Dba$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Dbappp Dbapp Dbap Dba</td>
+</tr>
+</tbody></table>
+<p>\：转译，匹配特殊字符本身</p>
+<p>|：表示或，任意匹配其中一个</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627525606507-ec92b2e7-2381-4362-bdf9-8946ad5b2ae3.png" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th>+|*|\</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+ \ *</td>
+</tr>
+</tbody></table>
+<p>.  ：匹配除换行符（\r,\n）之外的任何单个字符</p>
+<p>注：前文已做过解释</p>
+<h2 id="限定符"><a href="#限定符" class="headerlink" title="限定符"></a>限定符</h2><p>*、+、？前文已做过解释</p>
+<p>{n}：匹配确定的长度</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627525937419-be1141b5-2c8b-47c3-b983-bc995c702931.png" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th>o{2}</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tooobyshawn</td>
+</tr>
+</tbody></table>
+<p>{n,}：匹配至少n个</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627525982411-72c45b74-ffe9-439f-8e4a-2c5c22994ea9.png" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th>o{2,}</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tooobyshawn</td>
+</tr>
+</tbody></table>
+<p>{n,m}：最少匹配n次，最多匹配m次</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627526066817-0bd5982e-a6a7-4803-b118-314d411078bc.png" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th>o{3,4}</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Toooooobyshawn</td>
+</tr>
+</tbody></table>
+<p>***** <strong>和</strong> <strong>+</strong> <strong>限定符都是贪婪的，因为它们会尽可能多的匹配文字，只有在它们的后面加上一个 ? 就可以实现非贪婪或最小匹配。</strong></p>
+<p>\b：匹配空格与单词的位置</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627526428797-95d72955-b67c-4998-8732-863ddf370293.png" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th>\bsha</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tobyshawn shawn</td>
+</tr>
+</tbody></table>
+<p>\B：匹配非边界</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627526480326-71adc479-6a65-4cb0-acbc-03dda02f5453.png" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th>\Bsha</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tobyshawn shawn</td>
+</tr>
+</tbody></table>
+<h2 id="零宽断言"><a href="#零宽断言" class="headerlink" title="零宽断言"></a>零宽断言</h2><p>?=：<strong>xxx(?=exp)<strong>：</strong>后面匹配到exp，</strong>才去匹配xxx。</p>
+<p><strong>零宽度正预测先行断言</strong></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627527025498-ce810ff5-6799-45f1-a021-5e61e22e7343.png" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th>Toby(?=[\w])</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tobyshawn shawnToby</td>
+</tr>
+</tbody></table>
+<p>?&lt;=：**(?&lt;=exp)xxx<strong>：</strong>前面匹配到 exp**，才去匹配xxx。</p>
+<p><strong>零宽度正回顾后发断言</strong></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627527133581-f74c89fb-9714-49b4-bcdd-b50bd7616b0a.png" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th>(?&lt;=[\w])Toby</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tobyshawn shawnToby</td>
+</tr>
+</tbody></table>
+<p>?!：<strong>xxx(?!exp)<strong>：</strong>后面匹配不到exp</strong>，才去匹配xxx。</p>
+<p><strong>零宽度负预测先行断言</strong></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627527197182-9e0bb59a-e637-4a9f-a2a7-b8815ec867a1.png" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th>Toby(?![\w])</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tobyshawn shawnToby</td>
+</tr>
+</tbody></table>
+<p>?&lt;!：**(?&lt;!exp)xxx<strong>：</strong>前面匹配不到exp**，才去匹配xxx。</p>
+<p><strong>零宽度负回顾后发断言</strong></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627527271185-cf4bd0c9-8a0f-448a-b594-11d918e18b18.png" alt="img"></p>
+<table>
+<thead>
+<tr>
+<th>(?&lt;![\w])Toby</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Tobyshawn shawnToby</td>
+</tr>
+</tbody></table>
+<h1 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h1><p>i：ignore，忽略大小写</p>
+<p>g：global，全局匹配</p>
+<p>m：多行匹配</p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627527890797-36a37eeb-7bd5-4abd-84fb-3cf25044fdf3.png" alt="img"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2021/png/8359515/1627528155156-fc2b2c19-bba4-431a-8129-24454e2f6e04.png" alt="img"></p>
+<h1 id="常用正则整理"><a href="#常用正则整理" class="headerlink" title="常用正则整理"></a>常用正则整理</h1><h2 id="邮箱："><a href="#邮箱：" class="headerlink" title="邮箱："></a>邮箱：</h2><pre><code>\b[\w.%+-]+@[\w.-]+\.[a-zA-Z]&#123;2,6&#125;\b
 </code></pre>
-<h2 id="搜索镜像"><a href="#搜索镜像" class="headerlink" title="搜索镜像"></a>搜索镜像</h2><h3 id="1、docker-hub"><a href="#1、docker-hub" class="headerlink" title="1、docker  hub"></a>1、docker  hub</h3><p><img src="https://ts-bucker.oss-cn-hangzhou.aliyuncs.com/uPic/image-20210603104858557.png" alt="image-20210603104858557"></p>
-<h3 id="2、docker-search"><a href="#2、docker-search" class="headerlink" title="2、docker search"></a>2、docker search</h3><p>使用docker search xxx[:tag]命令，也可以带tag搜索</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker search ubuntu
-NAME                                                      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
-ubuntu                                                    Ubuntu is a Debian-based Linux operating sys…   12321     [OK]       
-dorowu/ubuntu-desktop-lxde-vnc                            Docker image to provide HTML5 VNC interface …   538                  [OK]
-websphere-liberty                                         WebSphere Liberty multi-architecture images …   273       [OK]       
-rastasheep/ubuntu-sshd                                    Dockerized SSH service, built on top of offi…   253                  [OK]
-consol/ubuntu-xfce-vnc                                    Ubuntu container with "headless" VNC session…   240                  [OK]
-ubuntu-upstart                                            Upstart is an event-based replacement for th…   110       [OK]       
-1and1internet/ubuntu-16-nginx-php-phpmyadmin-mysql-5      ubuntu-16-nginx-php-phpmyadmin-mysql-5          50                   [OK]
-open-liberty                                              Open Liberty multi-architecture images based…   46        [OK]       
-ubuntu-debootstrap                                        debootstrap --variant=minbase --components=m…   44        [OK]       
-i386/ubuntu                                               Ubuntu is a Debian-based Linux operating sys…   25                   
-solita/ubuntu-systemd                                     Ubuntu + systemd                                24                   [OK]
-1and1internet/ubuntu-16-apache-php-5.6                    ubuntu-16-apache-php-5.6                        14                   [OK]
+<h2 id="URL："><a href="#URL：" class="headerlink" title="URL："></a>URL：</h2><pre><code>^(?=^.&#123;3,255&#125;$)(http(s)?:\/\/)?(www\.)?[a-zA-Z0-9][-a-zA-Z0-9]&#123;0,62&#125;(\.[a-zA-Z0-9][-a-zA-Z0-9]&#123;0,62&#125;)+(:\d+)*(\/\w+\.\w+)*([\?&amp;]\w+=\w*)*$
 </code></pre>
-<h2 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h2><p>docker pull xxx:tag</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker pull centos:7
-7: Pulling from library/centos
-2d473b07cdd5: Pull complete 
-Digest: sha256:0f4ec88e21daf75124b8a9e5ca03c37a5e937e0e108a255d890492430789b60e
-Status: Downloaded newer image for centos:7
-docker.io/library/centos:7
+<h2 id="手机号："><a href="#手机号：" class="headerlink" title="手机号："></a>手机号：</h2><h2 id="身份证："><a href="#身份证：" class="headerlink" title="身份证："></a>身份证：</h2><p>15：</p>
+<p>18：</p>
+<h3 id="IP地址："><a href="#IP地址：" class="headerlink" title="IP地址："></a>IP地址：</h3><p>IPv4：</p>
+<pre><code>^(\d&#123;1,2&#125;|1\d\d|2[0-4]\d|25[0-5])\.(\d&#123;1,2&#125;|1\d\d|2[0-4]\d|25[0-5])\.(\d&#123;1,2&#125;|1\d\d|2[0-4]\d|25[0-5])\.(\d&#123;1,2&#125;|1\d\d|2[0-4]\d|25[0-5])$
 </code></pre>
-<h2 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h2><p>docker images</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker images
-REPOSITORY                        TAG             IMAGE ID       CREATED          SIZE
-seacms                            v6.61           17720ee28ffb   39 minutes ago   739MB
-seacms                            demo            bbc3a9befb03   42 minutes ago   739MB
-seacms                            v6.1            294c32f9d5b1   18 hours ago     705MB
-drupal_7.57                       cve-2018-7602   7b8d148f180b   25 hours ago     405MB
-drupal_8.3.0                      cve-2017-6920   5c4fe0f07e90   26 hours ago     691MB
-wordpress4.7                      cve-2017-5487   f620e62f2ca8   26 hours ago     946MB
-tobyshawn/ubuntu16_04_lamp        v1              c231de98bb36   2 days ago       602MB
-vulfocus/seacms-cnvd_2020_22721   latest          f4dccf30c280   10 days ago      585MB
-ubuntu                            16.04           9ff95a467e45   2 weeks ago      135MB
-secfa/docker-awvs                 latest          cd2a9f00863a   3 weeks ago      1.06GB
-centos                            7               8652b9f0cb4c   6 months ago     204MB
-drupal                            7.57            79c9b34e01cf   3 years ago      403MB
-drupal                            8.3.0           4e47ab49efee   4 years ago      445MB
-</code></pre>
-<h2 id="导出镜像"><a href="#导出镜像" class="headerlink" title="导出镜像"></a>导出镜像</h2><pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker save seacms:v6.61 > seacms_v6.61.tar
-[root@localhost /]# ls
-seacms_v6.61.tar  
-</code></pre>
-<h2 id="导入镜像"><a href="#导入镜像" class="headerlink" title="导入镜像"></a>导入镜像</h2><p>docker load &lt; tar包</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker load < dircms_2011-sp3-utf8.tar
-239bf11460ef: Loading layer [==================================================>]  47.15MB/47.15MB
-Loaded image: dircms:2011-sp3-utf8
-[root@localhost /]# docker images
-REPOSITORY                        TAG             IMAGE ID       CREATED        SIZE
-dircms                            2011-sp3-utf8   8a9c43e51650   18 hours ago   785MB
-</code></pre>
-<p>使用load导入的镜像不支持改名</p>
-<p>（建议save导出的镜像用load导入，export导出的镜像用import导入，不要混用）</p>
-<h1 id="容器操作"><a href="#容器操作" class="headerlink" title="容器操作"></a>容器操作</h1><h2 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h2><p>docker run -it 镜像名:tag [command]</p>
-<p>-i：交互式操作</p>
-<p>-t：终端</p>
-<p>-d：后台运行，不进入终端</p>
-<p>-p：指定端口映射，如8080:80的意思是将容器的80端口映射到宿主机上，访问宿主机的8080端口即可访问容器的80端口</p>
-<p>[command]：/bin/bash、/bin/sh，看需求，在进入容器时执行的命令，也可以自己写上指定脚本用于运行</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker run -it -p 8080:80 centos:7
-[root@87369de718c8 /]# ls
-anaconda-post.log  bin  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
-[root@87369de718c8 /]# pwd
-/
-[root@87369de718c8 /]# whoami;id
-root
-uid=0(root) gid=0(root)
-</code></pre>
-<h2 id="启动、停止、重启容器"><a href="#启动、停止、重启容器" class="headerlink" title="启动、停止、重启容器"></a>启动、停止、重启容器</h2><p>启动已有容器的命令为docker start 容器id</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker start 625dcd1bf772
-625dcd1bf772
-</code></pre>
-<h2 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h2><p>对于后台运行的容器（-d参数创建的容器，或是start已存在的容器），需要进入容器时有两种方法</p>
-<h3 id="1、docker-attach"><a href="#1、docker-attach" class="headerlink" title="1、docker attach"></a>1、docker attach</h3><p>docker attach 容器id   #exit时会停止容器（进⼊⼀个容器正在执⾏的终端）</p>
-<h3 id="2、docker-exec"><a href="#2、docker-exec" class="headerlink" title="2、docker exec"></a>2、docker exec</h3><p>docker exec -it 容器id /bin/bash  #exit时不会停止容器（进⼊容器新开⼀个终端）</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker exec -it 625dcd1bf772 /bin/bash
-root@625dcd1bf772:/# 
-</code></pre>
-<h2 id="容器保存成镜像"><a href="#容器保存成镜像" class="headerlink" title="容器保存成镜像"></a>容器保存成镜像</h2><p>docker commit 容器ID 镜像名</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker commit 28a8e3c0c9dd dircms_demo
-sha256:47249d0234ee9b962ff1121589bf5365746b614f51c72f33e78f3a51c48ca704
-[root@localhost /]# docker images
-REPOSITORY                        TAG             IMAGE ID       CREATED         SIZE
-dircms_demo                       latest          47249d0234ee   7 seconds ago   783MB
-</code></pre>
-<h2 id="容器导出为镜像"><a href="#容器导出为镜像" class="headerlink" title="容器导出为镜像"></a>容器导出为镜像</h2><p>docker export 容器id &gt; name.tar</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker export 625dcd1bf772 > name.tar
-[root@localhost /]# ll
-总用量 2994444
--rw-r--r--.   1 root root 613240832 6月   4 14:50 name.tar
-</code></pre>
-<h2 id="容器快照文件导入为镜像"><a href="#容器快照文件导入为镜像" class="headerlink" title="容器快照文件导入为镜像"></a>容器快照文件导入为镜像</h2><p>docker import 容器文件 镜像名</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker import name.tar name:test
-sha256:8feb4db4855da4aa9de16cbd57088d4946b8a2844a91737444ae3fe5ab1990c3
-[root@localhost /]# docker images
-REPOSITORY                   TAG             IMAGE ID       CREATED             SIZE
-name                         test            8feb4db4855d   6 seconds ago       602MB
-</code></pre>
-<p>使用import导入的镜像可以指定镜像名与tag</p>
-<p>（建议save导出的镜像用load导入，export导出的镜像用import导入，不要混用）</p>
-<h2 id="容器改名"><a href="#容器改名" class="headerlink" title="容器改名"></a>容器改名</h2><p>docker rename old_name new_name</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker ps -a
-CONTAINER ID   IMAGE                           COMMAND                  CREATED             STATUS                         PORTS     NAMES
-87369de718c8   centos:7                        "/bin/bash"              22 minutes ago      Exited (127) 6 seconds ago               dazzling_ritchie
-[root@localhost /]# docker rename dazzling_ritchie rubbish
-[root@localhost /]# docker ps -a
-CONTAINER ID   IMAGE                           COMMAND                  CREATED             STATUS                         PORTS     NAMES
-87369de718c8   centos:7                        "/bin/bash"              23 minutes ago      Exited (127) 55 seconds ago              rubbis
-</code></pre>
-<p><img src="https://ts-bucker.oss-cn-hangzhou.aliyuncs.com/uPic/image-20210603113831463.png" alt="image-20210603113831463"></p>
-<h2 id="容器与宿主机文件拷贝"><a href="#容器与宿主机文件拷贝" class="headerlink" title="容器与宿主机文件拷贝"></a>容器与宿主机文件拷贝</h2><p>docker cp 文件 容器名：容器内路径</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost /]# docker cp dircms_sp3_gbk.zip vigilant_mayer:/var/www/html
-</code></pre>
-<pre class=" language-shell"><code class="language-shell">root@43dd7ab25a68:/var/www/html# ls
-root@43dd7ab25a68:/var/www/html# ls
-dircms_sp3_gbk.zip
-</code></pre>
-<h2 id="容器内服务自启"><a href="#容器内服务自启" class="headerlink" title="容器内服务自启"></a>容器内服务自启</h2><p>制作完docker镜像后发现，每次新建容器或者重启容器，服务都不会自动起来，比如我搭建的cms，而apache2服务和mysql每次都是关闭的状态，还需要重新去开启，就很麻烦，因此希望容器内的服务能够随着容器的启动而启动。</p>
-<h3 id="目前情况"><a href="#目前情况" class="headerlink" title="目前情况"></a>目前情况</h3><pre class=" language-bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost test<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># docker start f1909ca90a08 </span>
-f1909ca90a08
-<span class="token punctuation">[</span>root@localhost test<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># docker exec -it f1909ca90a08 /bin/bash</span>
-root@f1909ca90a08:/<span class="token comment" spellcheck="true"># service apache2 status </span>
- * apache2 is not running
-root@f1909ca90a08:/<span class="token comment" spellcheck="true"># service mysql status </span>
- * MySQL is stopped.
-</code></pre>
-<h3 id="操作过程"><a href="#操作过程" class="headerlink" title="操作过程"></a>操作过程</h3><p>在docker容器内写入sh，并赋予执行权限</p>
-<p>命令根据自己的要求更改，最后留着/bin/bash是为了保留终端</p>
-<p>(如果是打包集成环境，不需要终端操作而只是开启后后台运行的话，建议将/bin/bash 改成 tail -f /dev/null，因为)</p>
-<pre class=" language-shell"><code class="language-shell">root@f1909ca90a08:/# vi /etc/apache2/auto_start.sh
-root@f1909ca90a08:/# cat /etc/apache2/auto_start.sh 
-service apache2 start 
-service mysql start
-/bin/bash
-root@f1909ca90a08:/# chmod 777 /etc/apache2/auto_start.sh
-</code></pre>
-<p>退出容器，并关闭，保存为镜像</p>
-<pre class=" language-shell"><code class="language-shell">root@f1909ca90a08:/# exit
-exit
-[root@localhost test]# docker ps 
-CONTAINER ID   IMAGE         COMMAND       CREATED             STATUS         PORTS                                             NAMES
-f1909ca90a08   seacms:v6.1   "/bin/bash"   About an hour ago   Up 5 minutes   3306/tcp, 0.0.0.0:8080->80/tcp, :::8080->80/tcp   mystifying_bose
-[root@localhost test]# docker stop f1909ca90a08
-f1909ca90a08
-[root@localhost test]# docker commit f1909ca90a08 seacms:demo
-sha256:bbc3a9befb0323272f2889d6ce9d4cf3a1c20270f3fb765325252ae6fbcc8a88
-[root@localhost test]# 
-</code></pre>
-<p>在一个*<u><strong>空目录</strong></u>*下，创建Dockerfile</p>
-<p>FROM 指定基础镜像</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost test]# ls
-[root@localhost test]# vi Dockerfile
-[root@localhost test]# cat Dockerfile 
-From seacms:demo
-
-CMD ["/bin/sh","/etc/apache2/auto_start.sh"]
-[root@localhost test]# 
-</code></pre>
-<p>通过Dockerfile构建新的镜像</p>
-<p>-t指定最终镜像名，需要跟地址，这里使用的是 “**.**” ，也就是当前目录</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost test]# docker build -t seacms:v6.61 .
-Sending build context to Docker daemon  2.048kB
-Step 1/2 : From seacms:demo
- ---> bbc3a9befb03
-Step 2/2 : CMD ["/bin/sh","/etc/apache2/auto_start.sh"]
- ---> Running in ec97dd1c1b8d
-Removing intermediate container ec97dd1c1b8d
- ---> 17720ee28ffb
-Successfully built 17720ee28ffb
-Successfully tagged seacms:v6.61
-[root@localhost test]# 
-</code></pre>
-<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>用新的镜像创建容器</p>
-<pre class=" language-shell"><code class="language-shell">[root@localhost test]# docker images
-REPOSITORY                        TAG             IMAGE ID       CREATED              SIZE
-seacms                            v6.61           17720ee28ffb   About a minute ago   739MB
-seacms                            demo            bbc3a9befb03   4 minutes ago        739MB
-seacms                            v6.1            294c32f9d5b1   17 hours ago         705MB
-[root@localhost test]# docker run -it -p 8080:80 seacms:v6.61
- * Starting web server apache2                                                                                                                                                               AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
- * 
- * Starting MySQL database server mysqld                                                                                                                                              [ OK ] 
- * Checking for tables which need an upgrade, are corrupt or were 
-not closed cleanly.
-root@87da08c8d005:/# service apache2 status
- * apache2 is running
-root@87da08c8d005:/# service mysql status
- * /usr/bin/mysqladmin  Ver 8.42 Distrib 5.5.60, for debian-linux-gnu on x86_64
-Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
-
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
-owners.
-
-Server version        5.5.60-0ubuntu0.14.04.1
-Protocol version    10
-Connection        Localhost via UNIX socket
-UNIX socket        /var/run/mysqld/mysqld.sock
-Uptime:            17 sec
-
-Threads: 1  Questions: 212  Slow queries: 0  Opens: 82  Flush tables: 1  Open tables: 75  Queries per second avg: 12.470
-root@87da08c8d005:/#
-</code></pre>
-<p>此时服务已经随着容器的启动而启动了</p>
+<p>IPv6：</p>
 
                 
             </div>
@@ -665,7 +681,7 @@ root@87da08c8d005:/#
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://tobyshawn.xyz/2021/06/06/docker%E5%88%9D%E5%AD%A6%E4%B9%A0/">https://tobyshawn.xyz/2021/06/06/docker%E5%88%9D%E5%AD%A6%E4%B9%A0/</a>
+                    <a href="https://tobyshawn.xyz/2021/08/31/%E6%AD%A3%E5%88%99/">https://tobyshawn.xyz/2021/08/31/%E6%AD%A3%E5%88%99/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -702,15 +718,7 @@ root@87da08c8d005:/#
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/linux/">
-                                    <span class="chip bg-color">linux</span>
-                                </a>
-                            
-                                <a href="/tags/docker/">
-                                    <span class="chip bg-color">docker</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -879,7 +887,7 @@ root@87da08c8d005:/#
         repo: 'https://tobyshawn.xyz/',
         owner: 'tobyshawn',
         admin: null,
-        id: '2021-06-06T11-18-26',
+        id: '2021-08-31T16-41-33',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -907,16 +915,56 @@ root@87da08c8d005:/#
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/06/08/CS%E9%92%93%E9%B1%BC%E9%82%AE%E4%BB%B6/">
+                <a href="/2021/08/31/%E6%AD%A3%E5%88%99/">
                     <div class="card-image">
                         
-                        <img src="https://ts-bucker.oss-cn-hangzhou.aliyuncs.com/uPic/image-20210608133051591.png" class="responsive-img" alt="CS钓鱼邮件">
                         
-                        <span class="card-title">CS钓鱼邮件</span>
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="正则初学习">
+                        
+                        <span class="card-title">正则初学习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            正则表达式是在工作生活中经常用到的一种匹配方式
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-31
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            tobyshawn
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/08/30/Shell%E5%91%BD%E4%BB%A4/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Shell基础">
+                        
+                        <span class="card-title">Shell基础</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -926,9 +974,9 @@ root@87da08c8d005:/#
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-30
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -940,65 +988,12 @@ root@87da08c8d005:/#
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%BA%A2%E9%98%9F/">
-                        <span class="chip bg-color">红队</span>
-                    </a>
-                    
-                    <a href="/tags/cobalt-strike/">
-                        <span class="chip bg-color">cobalt strike</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/06/06/docker%E5%88%9D%E5%AD%A6%E4%B9%A0/">
-                    <div class="card-image">
-                        
-                        <img src="https://ts-bucker.oss-cn-hangzhou.aliyuncs.com/uPic/image-20210603104858557.png" class="responsive-img" alt="docker初学习">
-                        
-                        <span class="card-title">docker初学习</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-06
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    日常学习
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
                     <a href="/tags/linux/">
                         <span class="chip bg-color">linux</span>
                     </a>
                     
-                    <a href="/tags/docker/">
-                        <span class="chip bg-color">docker</span>
+                    <a href="/tags/%E7%BC%96%E7%A8%8B/">
+                        <span class="chip bg-color">编程</span>
                     </a>
                     
                 </div>

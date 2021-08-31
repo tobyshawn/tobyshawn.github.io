@@ -373,14 +373,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-08-30
+                    2021-08-31
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.6k
+                    2k
                 </div>
                 
 
@@ -406,7 +406,7 @@
 <p>shell是一个<strong>应用程序</strong>，它连接了用户和linux内核，让用户能够更高效、安全、低成本的使用linux内核，这个就是shell的本质</p>
 <p>一般放在/bin或者/usr/bin目录下，当前 Linux 系统可用的 Shell 都记录在/etc/shells文件中</p>
 <p>可以使用echo $SHELL查看当前shell</p>
-<pre><code>tobyshawn @ MacBookPro-M1 in ~ $ cat /etc/shells                                        exit 1 18:58:10
+<pre class=" language-shell"><code class="language-shell">tobyshawn @ MacBookPro-M1 in ~ $ cat /etc/shells                                        exit 1 18:58:10
 /bin/bash
 /bin/csh
 /bin/dash
@@ -416,7 +416,7 @@
 /bin/zsh
 /usr/local/bin/pwsh
 </code></pre>
-<pre><code>root@8c300f41b9f9:/# cat /etc/passwd
+<pre class=" language-shell"><code class="language-shell">root@8c300f41b9f9:/# cat /etc/passwd
 root:x:0:0:root:/root:/bin/bash
 daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
 sync:x:4:65534:sync:/bin:/bin/sync
@@ -465,12 +465,12 @@ guest2:x:1001:1001::/home/guest2:/bin/sh
 <p>业界所说的 shell 通常都是指 shell 脚本，但读者朋友要知道，shell 和 shell script 是两个不同的概念。</p>
 <p>由于习惯的原因，简洁起见，本文出现的 “shell编程” 都是指 shell 脚本编程，不是指开发 shell 自身。</p>
 <p>作为可执行程序</p>
-<pre><code>root@8c300f41b9f9:/home# ls     #查看该路径下文件
+<pre class=" language-shell"><code class="language-shell">root@8c300f41b9f9:/home# ls     #查看该路径下文件
 HW.sh
 
 root@8c300f41b9f9:/home# cat HW.sh      #查看文件内容
 #!/bin/bash
-echo &quot;Hello Dbapp!&quot;
+echo "Hello Dbapp!"
 
 root@8c300f41b9f9:/home# chmod +x HW.sh     #给文件增加执行权限
 
@@ -480,11 +480,11 @@ Hello Dbapp!
 <p><strong>#!</strong> 是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行，即使用哪一种 Shell</p>
 <p>在执行时需要写成./HW.sh，而不能直接写HW.sh，否则会去PATH里寻找有没有叫HW.sh的路径（./表示当前路径）</p>
 <p>作为解释器参数（不需要在第一行指定解释器信息）</p>
-<pre><code>root@8c300f41b9f9:/home# ll HW.sh           #查看权限
+<pre class=" language-shell"><code class="language-shell">root@8c300f41b9f9:/home# ll HW.sh           #查看权限
 -rw-r--r-- 1 root root 20 Jul 28 09:29 HW.sh
 
 root@8c300f41b9f9:/home# cat HW.sh      #查看内容（没有指定解释器）
-echo &quot;Hello Dbapp!&quot;
+echo "Hello Dbapp!"
 
 root@8c300f41b9f9:/home# /bin/bash HW.sh    #作为解释器的参数执行
 Hello Dbapp!
@@ -498,13 +498,13 @@ Hello Dbapp!
 <li>不能使用bash里的关键字（可用help命令查看保留关键字）</li>
 </ol>
 <p>有效的变量名</p>
-<pre><code>Toby3shawn
+<pre class=" language-shell"><code class="language-shell">Toby3shawn
 _DAS
 Dbapp2
 JK_RL_PD
 </code></pre>
 <p>无效的变量名</p>
-<pre><code>+chr
+<pre class=" language-shell"><code class="language-shell">+chr
 3sky
 toby shawn
 echo
@@ -515,9 +515,9 @@ db、app
 <p>单引号赋值会直接输出引号内容</p>
 <p>双引号赋值会先解析变量和命令，会进行转移</p>
 <p>反引号``或者括号$()括起来的部分是shell命令部分</p>
-<pre><code>root@8c300f41b9f9:/home# cat test.sh
+<pre class=" language-shell"><code class="language-shell">root@8c300f41b9f9:/home# cat test.sh
 #!/bin/bash
-my_id=&#39;123456&#39;              #直接赋值
+my_id='123456'              #直接赋值
 echo $my_id
 
 
@@ -551,35 +551,35 @@ a.txt                   #变量file2被赋值输出
 b.txt
 c.txt
 </code></pre>
-<h4 id="变量使用"><a href="#变量使用" class="headerlink" title="变量使用"></a>变量使用</h4><pre><code>root@8c300f41b9f9:/home# cat test2.sh
+<h4 id="变量使用"><a href="#变量使用" class="headerlink" title="变量使用"></a>变量使用</h4><pre class=" language-shell"><code class="language-shell">root@8c300f41b9f9:/home# cat test2.sh
 #!/bin/bash
-weather=&quot;cloudy&quot;
-echo &quot;It&#39;s $weather today&quot;          #定义过的变量只要加$即可输出
+weather="cloudy"
+echo "It's $weather today"          #定义过的变量只要加$即可输出
 
-weather=&quot;cloudy&quot;
-echo &quot;It&#39;s $&#123;weather&#125; today&quot;        #花括号是可选的
+weather="cloudy"
+echo "It's $&#123;weather&#125; today"        #花括号是可选的
 
-weather=&quot;cloudy&quot;
-echo &quot;It&#39;s_$weather_today&quot;          #weather_today会被当成新的变量
+weather="cloudy"
+echo "It's_$weather_today"          #weather_today会被当成新的变量
 
-weather=&quot;cloudy&quot;
-echo &quot;It&#39;s_$&#123;weather&#125;_today&quot;        #与上一条对比，花括号为了定义变量的边界
+weather="cloudy"
+echo "It's_$&#123;weather&#125;_today"        #与上一条对比，花括号为了定义变量的边界
 
 root@8c300f41b9f9:/home# ./test2.sh
-It&#39;s cloudy today
-It&#39;s cloudy today
-It&#39;s_
-It&#39;s_cloudy_today
+It's cloudy today
+It's cloudy today
+It's_
+It's_cloudy_today
 </code></pre>
 <p>建议给所有变量都加上花括号</p>
-<pre><code>name=&quot;pony&quot;
+<pre class=" language-shell"><code class="language-shell">name="pony"
 echo $name
-name=&quot;jack&quot;
+name="jack"
 echo $name
 
-name=&quot;pony&quot;
+name="pony"
 echo $name
-$name=&quot;jack&quot;        #变量在赋值的时候不要加$符号
+$name="jack"        #变量在赋值的时候不要加$符号
 echo $name
 
 
@@ -592,19 +592,19 @@ pony
 pony
 </code></pre>
 <p>只读与删除</p>
-<pre><code>root@8c300f41b9f9:/home# cat test4.sh
+<pre class=" language-shell"><code class="language-shell">root@8c300f41b9f9:/home# cat test4.sh
 #!/bin/bash
 
-address=&quot;AHDS&quot;
-name=&quot;shawn&quot;
+address="AHDS"
+name="shawn"
 
 readonly address            #设置为只读
 
 echo $address
 echo $name
 
-address=&quot;AHDS_2&quot;            #赋值会失败
-name=&quot;shawn_2&quot;              #赋值成功
+address="AHDS_2"            #赋值会失败
+name="shawn_2"              #赋值成功
 
 echo $address                   #输出原来的
 echo $name                      #输出新的
@@ -626,18 +626,18 @@ shawn_2
 AHDS
 </code></pre>
 <h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>拼接字符串</p>
-<pre><code>root@8c300f41b9f9:/home# cat test5.sh
+<pre class=" language-shell"><code class="language-shell">root@8c300f41b9f9:/home# cat test5.sh
 #!/bin/bash
 
-weather=&quot;cloudy&quot;
+weather="cloudy"
 #双引号拼接
-today1=&quot;It is, &quot;$weather&quot; today&quot;
-today2=&quot;It is, $&#123;weather&#125; today&quot;
+today1="It is, "$weather" today"
+today2="It is, $&#123;weather&#125; today"
 echo $today1
 echo $today2
 #单引号拼接
-today3=&#39;It is, &#39;$weather&#39; today&#39;
-today4=&#39;It is, $&#123;weather&#125; today&#39;
+today3='It is, '$weather' today'
+today4='It is, $&#123;weather&#125; today'
 echo $today3
 echo $today4
 
@@ -650,14 +650,14 @@ It is, cloudy today
 It is, $&#123;weather&#125; today
 </code></pre>
 <p>子字符串</p>
-<pre><code>root@8c300f41b9f9:/home# cat test6.sh
+<pre class=" language-shell"><code class="language-shell">root@8c300f41b9f9:/home# cat test6.sh
 #!/bin/bash
 
-string=&quot;It&#39;s cloudy today&quot;
+string="It's cloudy today"
 
 echo $&#123;#string&#125;                 #输出字符串的长度
 echo $&#123;string:5:6&#125;          #从第5个字符开始，截取6个输出
-echo `expr index &quot;$&#123;string&#125;&quot; d`     #查找d在字符串中首次出现的位置
+echo `expr index "$&#123;string&#125;" d`     #查找d在字符串中首次出现的位置
 #expr 是一款表达式计算工具，使用它能完成表达式的求值操作
 
 
@@ -666,7 +666,7 @@ root@8c300f41b9f9:/home# ./test6.sh
 cloudy
 10
 </code></pre>
-<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><pre><code>root@8c300f41b9f9:/home# cat test7.sh
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><pre class=" language-shell"><code class="language-shell">root@8c300f41b9f9:/home# cat test7.sh
 #!/bin/bash
 
 array1=(a b c d e)      #定义方式1
@@ -692,58 +692,58 @@ d
 f[1]
 A B C
 </code></pre>
-<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><pre><code>root@8c300f41b9f9:/home# cat test8.sh
+<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><pre class=" language-shell"><code class="language-shell">root@8c300f41b9f9:/home# cat test8.sh
 
 #this is danhang zhushi
 
-:&lt;&lt;EOF
+:<<EOF
 one
 tow
 three
 EOF
 
-:&lt;&lt;&#39;
+:<<'
 one
 two
 three
-&#39;
+'
 
-:&lt;&lt;!
+:<<!
 one
 two
 three
 !
 </code></pre>
 <h3 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h3><p>expr 是一款表达式计算工具，使用它能完成表达式的求值操作</p>
-<h4 id="算数运算"><a href="#算数运算" class="headerlink" title="算数运算"></a>算数运算</h4><pre><code>root@8c300f41b9f9:/home# cat test9.sh
+<h4 id="算数运算"><a href="#算数运算" class="headerlink" title="算数运算"></a>算数运算</h4><pre class=" language-shell"><code class="language-shell">root@8c300f41b9f9:/home# cat test9.sh
 #!/bin/bash
 
 a=10
 b=20
 
 val=`expr $a + $b`
-echo &quot;a + b : $val&quot;
+echo "a + b : $val"
 
 val=`expr $a - $b`
-echo &quot;a - b : $val&quot;
+echo "a - b : $val"
 
 val=`expr $a \* $b`             #乘号(*)前边必须加反斜杠(\)才能实现乘法运算
-echo &quot;a * b : $val&quot;
+echo "a * b : $val"
 
 val=`expr $b / $a`
-echo &quot;b / a : $val&quot;
+echo "b / a : $val"
 
 val=`expr $b % $a`
-echo &quot;b % a : $val&quot;
+echo "b % a : $val"
 
 if [ $a == $b ]
 then
-   echo &quot;a =  b&quot;
+   echo "a =  b"
 fi
 
 if [ $a != $b ]
 then
-   echo &quot;a != b&quot;
+   echo "a != b"
 fi
 
 
@@ -755,7 +755,7 @@ b / a : 2
 b % a : 0
 a != b
 </code></pre>
-<h4 id="关系运算"><a href="#关系运算" class="headerlink" title="关系运算"></a>关系运算</h4><pre><code>root@8c300f41b9f9:/home# cat test10.sh
+<h4 id="关系运算"><a href="#关系运算" class="headerlink" title="关系运算"></a>关系运算</h4><pre class=" language-shell"><code class="language-shell">root@8c300f41b9f9:/home# cat test10.sh
 #!/bin/bash
 
 a=10
@@ -763,49 +763,49 @@ b=20
 
 if [ $a -eq $b ]        #是否等于
 then
-   echo &quot;$a -eq $b : a = b&quot;
+   echo "$a -eq $b : a = b"
 else
-   echo &quot;$a -eq $b: a != b&quot;
+   echo "$a -eq $b: a != b"
 fi
 if [ $a -ne $b ]        #是否不等
 then
-   echo &quot;$a -ne $b: a != b&quot;
+   echo "$a -ne $b: a != b"
 else
-   echo &quot;$a -ne $b : a = b&quot;
+   echo "$a -ne $b : a = b"
 fi
 if [ $a -gt $b ]        #是否大于
 then
-   echo &quot;$a -gt $b: a &gt; b&quot;
+   echo "$a -gt $b: a > b"
 else
-   echo &quot;$a -gt $b: a !&gt; b&quot;
+   echo "$a -gt $b: a !> b"
 fi
 if [ $a -lt $b ]        #是否小于
 then
-   echo &quot;$a -lt $b: a &lt; b&quot;
+   echo "$a -lt $b: a < b"
 else
-   echo &quot;$a -lt $b: a !&lt; b&quot;
+   echo "$a -lt $b: a !< b"
 fi
 if [ $a -ge $b ]        #是否大于等于
 then
-   echo &quot;$a -ge $b: a &gt;= b&quot;
+   echo "$a -ge $b: a >= b"
 else
-   echo &quot;$a -ge $b: a &lt; b&quot;
+   echo "$a -ge $b: a < b"
 fi
 if [ $a -le $b ]        是否小于等于
 then
-   echo &quot;$a -le $b: a &lt;= b&quot;
+   echo "$a -le $b: a <= b"
 else
-   echo &quot;$a -le $b: a &gt; b&quot;
+   echo "$a -le $b: a > b"
 fi
 
 
 root@8c300f41b9f9:/home# ./test10.sh
 10 -eq 20: a != b
 10 -ne 20: a != b
-10 -gt 20: a !&gt; b
-10 -lt 20: a &lt; b
-10 -ge 20: a &lt; b
-10 -le 20: a &lt;= b
+10 -gt 20: a !> b
+10 -lt 20: a < b
+10 -ge 20: a < b
+10 -le 20: a <= b
 </code></pre>
 <h4 id="布尔运算"><a href="#布尔运算" class="headerlink" title="布尔运算"></a>布尔运算</h4><p>优先级为： <strong>!</strong> 最高， <strong>-a</strong> 次之， <strong>-o</strong> 最低</p>
 <table>
@@ -832,34 +832,34 @@ root@8c300f41b9f9:/home# ./test10.sh
 <td>[ $a -lt 20 -a $b -gt 100 ] 返回 false。</td>
 </tr>
 </tbody></table>
-<pre><code>#!/bin/bash
+<pre class=" language-shell"><code class="language-shell">#!/bin/bash
 
 a=10
 b=20
 
 if [ $a != $b ]
 then
-   echo &quot;$a != $b : a 不等于 b&quot;
+   echo "$a != $b : a 不等于 b"
 else
-   echo &quot;$a == $b: a 等于 b&quot;
+   echo "$a == $b: a 等于 b"
 fi
 if [ $a -lt 100 -a $b -gt 15 ]
 then
-   echo &quot;$a 小于 100 且 $b 大于 15 : 返回 true&quot;
+   echo "$a 小于 100 且 $b 大于 15 : 返回 true"
 else
-   echo &quot;$a 小于 100 且 $b 大于 15 : 返回 false&quot;
+   echo "$a 小于 100 且 $b 大于 15 : 返回 false"
 fi
 if [ $a -lt 100 -o $b -gt 100 ]
 then
-   echo &quot;$a 小于 100 或 $b 大于 100 : 返回 true&quot;
+   echo "$a 小于 100 或 $b 大于 100 : 返回 true"
 else
-   echo &quot;$a 小于 100 或 $b 大于 100 : 返回 false&quot;
+   echo "$a 小于 100 或 $b 大于 100 : 返回 false"
 fi
 if [ $a -lt 5 -o $b -gt 100 ]
 then
-   echo &quot;$a 小于 5 或 $b 大于 100 : 返回 true&quot;
+   echo "$a 小于 5 或 $b 大于 100 : 返回 true"
 else
-   echo &quot;$a 小于 5 或 $b 大于 100 : 返回 false&quot;
+   echo "$a 小于 5 或 $b 大于 100 : 返回 false"
 fi
 
 
@@ -868,23 +868,23 @@ fi
 10 小于 100 或 20 大于 100 : 返回 true
 10 小于 5 或 20 大于 100 : 返回 false
 </code></pre>
-<h4 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h4><pre><code>#!/bin/bash
+<h4 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h4><pre class=" language-shell"><code class="language-shell">#!/bin/bash
 
 a=10
 b=20
 
-if [[ $a -lt 100 &amp;&amp; $b -gt 100 ]]
+if [[ $a -lt 100 && $b -gt 100 ]]
 then
-   echo &quot;返回 true&quot;
+   echo "返回 true"
 else
-   echo &quot;返回 false&quot;
+   echo "返回 false"
 fi
 
 if [[ $a -lt 100 || $b -gt 100 ]]
 then
-   echo &quot;返回 true&quot;
+   echo "返回 true"
 else
-   echo &quot;返回 false&quot;
+   echo "返回 false"
 fi
 
 
@@ -966,50 +966,50 @@ fi
 </tr>
 </tbody></table>
 <p><strong>/var/www/runoob/test.sh</strong>，它的大小为 100 字节，具有 <strong>rwx</strong> 权限</p>
-<pre><code>#!/bin/bash
+<pre class=" language-shell"><code class="language-shell">#!/bin/bash
 
-file=&quot;/var/www/runoob/test.sh&quot;
+file="/var/www/runoob/test.sh"
 if [ -r $file ]
 then
-   echo &quot;文件可读&quot;
+   echo "文件可读"
 else
-   echo &quot;文件不可读&quot;
+   echo "文件不可读"
 fi
 if [ -w $file ]
 then
-   echo &quot;文件可写&quot;
+   echo "文件可写"
 else
-   echo &quot;文件不可写&quot;
+   echo "文件不可写"
 fi
 if [ -x $file ]
 then
-   echo &quot;文件可执行&quot;
+   echo "文件可执行"
 else
-   echo &quot;文件不可执行&quot;
+   echo "文件不可执行"
 fi
 if [ -f $file ]
 then
-   echo &quot;文件为普通文件&quot;
+   echo "文件为普通文件"
 else
-   echo &quot;文件为特殊文件&quot;
+   echo "文件为特殊文件"
 fi
 if [ -d $file ]
 then
-   echo &quot;文件是个目录&quot;
+   echo "文件是个目录"
 else
-   echo &quot;文件不是个目录&quot;
+   echo "文件不是个目录"
 fi
 if [ -s $file ]
 then
-   echo &quot;文件不为空&quot;
+   echo "文件不为空"
 else
-   echo &quot;文件为空&quot;
+   echo "文件为空"
 fi
 if [ -e $file ]
 then
-   echo &quot;文件存在&quot;
+   echo "文件存在"
 else
-   echo &quot;文件不存在&quot;
+   echo "文件不存在"
 fi
 
 
@@ -1022,30 +1022,30 @@ fi
 文件不为空
 文件存在
 </code></pre>
-<h3 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h3><h4 id="if条件语句"><a href="#if条件语句" class="headerlink" title="if条件语句"></a>if条件语句</h4><pre><code>root@8c300f41b9f9:/home# cat test11.sh
+<h3 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h3><h4 id="if条件语句"><a href="#if条件语句" class="headerlink" title="if条件语句"></a>if条件语句</h4><pre class=" language-shell"><code class="language-shell">root@8c300f41b9f9:/home# cat test11.sh
 #!/bin/bash
 a=5
 b=6
 
 if [ $a == $b ]
 then
-    echo &quot;=&quot;
+    echo "="
 elif [ $a -gt $b ]
 then
-    echo &quot;&gt;&quot;
+    echo ">"
 else
-    echo &quot;&lt;&quot;
+    echo "<"
 fi
 
 
 root@8c300f41b9f9:/home# ./test11.sh
-&lt;
+<
 
 #将以上代码写成一行
-root@8c300f41b9f9:/home# a=5; b=6; if [ $a == $b ]; then echo &quot;=&quot;; elif [ $a -gt $b ]; then echo &quot;&gt;&quot;; else echo &quot;&lt;&quot;; fi
-&lt;
+root@8c300f41b9f9:/home# a=5; b=6; if [ $a == $b ]; then echo "="; elif [ $a -gt $b ]; then echo ">"; else echo "<"; fi
+<
 </code></pre>
-<h4 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h4><pre><code>root@8c300f41b9f9:/home# cat test12.sh
+<h4 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h4><pre class=" language-shell"><code class="language-shell">root@8c300f41b9f9:/home# cat test12.sh
 #!/bin/bash
 for num in a bb ccc dddd eeeee
 do
@@ -1069,13 +1069,13 @@ dddd
 eeeee
 </code></pre>
 <h4 id="while条件循环"><a href="#while条件循环" class="headerlink" title="while条件循环"></a>while条件循环</h4><p>let 命令是 BASH 中用于计算的工具，用于执行一个或多个表达式，变量计算中不需要加上 $ 来表示变量。如果表达式中包含了空格或其他特殊字符，则必须引起来。</p>
-<pre><code>root@8c300f41b9f9:/home# cat test13.sh
+<pre class=" language-shell"><code class="language-shell">root@8c300f41b9f9:/home# cat test13.sh
 #!/bin/bash
 num=10
-while(($num&lt;=15))
+while(($num<=15))
 do
     echo $num
-    let &quot;num++&quot;
+    let "num++"
 done
 
 root@8c300f41b9f9:/home# ./test13.sh
@@ -1086,12 +1086,74 @@ root@8c300f41b9f9:/home# ./test13.sh
 14
 15
 </code></pre>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h2 id="Shell运维命令"><a href="#Shell运维命令" class="headerlink" title="Shell运维命令"></a>Shell运维命令</h2><h3 id="安装工具"><a href="#安装工具" class="headerlink" title="安装工具"></a>安装工具</h3><p><strong>CentOS</strong></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="Shell运维命令"><a href="#Shell运维命令" class="headerlink" title="Shell运维命令"></a>Shell运维命令</h2><h3 id="安装工具"><a href="#安装工具" class="headerlink" title="安装工具"></a>安装工具</h3><p><strong>CentOS</strong></p>
 <p>yum</p>
 <p><strong>Ubuntu</strong></p>
 <p>apt</p>
-<p>网络相关</p>
-<p>文件相关</p>
+<h3 id="网络相关"><a href="#网络相关" class="headerlink" title="网络相关"></a>网络相关</h3><p>ifconfig</p>
+<p>ip addr</p>
+<p>arp</p>
+<p>ifup</p>
+<p>netstat</p>
+<p>ping</p>
+<p>traceroute</p>
+<p>ssh</p>
+<h3 id="文件目录相关"><a href="#文件目录相关" class="headerlink" title="文件目录相关"></a>文件目录相关</h3><p>sed</p>
+<p>awk</p>
+<p>grep</p>
+<p>find</p>
+<p>mv</p>
+<p>cp</p>
+<p>rm</p>
+<p>head</p>
+<p>tail</p>
+<p>ls</p>
+<p>cd</p>
+<p>mkdir</p>
+<p>rmdir</p>
+<p>cat</p>
+<p>tac</p>
+<p>more</p>
+<p>less</p>
+<p>file</p>
+<p>chmod</p>
+<p>chown</p>
+<p>sort</p>
+<p>uniq</p>
+<p>wc</p>
+<p>vi/vim</p>
+<p>wget</p>
+<p>rz</p>
+<p>sz</p>
+<p>tar</p>
+<p>unzip</p>
+<h3 id="进程相关"><a href="#进程相关" class="headerlink" title="进程相关"></a>进程相关</h3><p>ps</p>
+<p>top</p>
+<p>kill</p>
+<h3 id="系统相关"><a href="#系统相关" class="headerlink" title="系统相关"></a>系统相关</h3><p>date</p>
+<p>cal</p>
+<p>uname</p>
+<p>whoami</p>
+<p>hostname</p>
+<p>df</p>
+<p>mount</p>
+<h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><p>locate</p>
+<p>whereis</p>
+<p>grep</p>
+<p>find</p>
+<p>which</p>
+<h3 id="用户相关"><a href="#用户相关" class="headerlink" title="用户相关"></a>用户相关</h3><p>last</p>
+<p>lastb</p>
+<p>who</p>
+<p>useradd</p>
+<p>userdel</p>
+<p>id</p>
+<p>whoami</p>
+<p>usermod</p>
+<p>passwd</p>
+<p>groupadd</p>
+<h3 id="服务相关"><a href="#服务相关" class="headerlink" title="服务相关"></a>服务相关</h3><p>service</p>
+<p>systemctl</p>
 
                 
             </div>
@@ -1360,30 +1422,29 @@ root@8c300f41b9f9:/home# ./test13.sh
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/08/30/Shell%E5%91%BD%E4%BB%A4/">
+                <a href="/2021/08/31/%E6%AD%A3%E5%88%99/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Shell基础">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="正则初学习">
                         
-                        <span class="card-title">Shell基础</span>
+                        <span class="card-title">正则初学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            正则表达式是在工作生活中经常用到的一种匹配方式
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-30
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-31
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1391,19 +1452,6 @@ root@8c300f41b9f9:/home# ./test13.sh
                             
                         </span>
                     </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/linux/">
-                        <span class="chip bg-color">linux</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BC%96%E7%A8%8B/">
-                        <span class="chip bg-color">编程</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -1651,7 +1699,7 @@ root@8c300f41b9f9:/home# ./test13.sh
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">12.6k</span>
+                        class="white-color">11.9k</span>
             
             
             
